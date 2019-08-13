@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Talent Path Pipeline Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talent-path-pipeline/server.git"
+  },
+  "author": "Kevin Baktiar, Emily Yang, Sam Saks-Fithian, Devon Marantz, Roberto Sanchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/talent-path-pipeline/server/issues"
+  },
+  "homepage": "https://github.com/talent-path-pipeline/server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "pg": "^7.12.1",
+    "sequelize": "^5.13.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
