@@ -45,3 +45,5 @@ const candidate = (sequelize, type) => {
     Candidate.belongsToMany(models.CandidateLessons);
   };
 };
+
+module.exports = candidate;
