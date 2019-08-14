@@ -1,21 +1,23 @@
 const { Sequelize } = require('sequelize');
 
-module.exports = (sequelize, type) =>
-  sequelize.define(
-    'persona',
-    {
-      // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-      },
-      persona: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+const persona = (sequelize, type) => {
+  const Persona = sequelize.define('persona', {
+    // attributes
+    id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      primaryKey: true,
     },
-    {
-      // options
-    }
-  );
+    persona: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+  });
+
+  Persona.associate = models => {
+    Persona.hasMany(models.Permission);
+    Persona.belongsTo(models.User);
+  };
+};
+
+module.exports = persona;

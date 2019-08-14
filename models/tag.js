@@ -1,21 +1,22 @@
 const { Sequelize } = require('sequelize');
 
-module.exports = (sequelize, type) =>
-  sequelize.define(
-    'tag',
-    {
-      // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-      },
-      tag: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+const tag = (sequelize, type) => {
+  const Tag = sequelize.define('tag', {
+    // attributes
+    id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      primaryKey: true,
     },
-    {
-      // options
-    }
-  );
+    tag: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+  });
+
+  Tag.associate = models => {
+    Tag.belongsToMany(models.LessonTag);
+  };
+};
+
+module.exports = tag;

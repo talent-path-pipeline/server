@@ -1,21 +1,22 @@
 const { Sequelize } = require('sequelize');
 
-module.exports = (sequelize, type) =>
-  sequelize.define(
-    'question',
-    {
-      // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-      },
-      question: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+const question = (sequelize, type) => {
+  const Question = sequelize.define('question', {
+    // attributes
+    id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      primaryKey: true,
     },
-    {
-      // options
-    }
-  );
+    question: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+  });
+
+  Question.associate = models => {
+    Question.belongsToMany(models.Candidate);
+  };
+};
+
+module.exports = question;
