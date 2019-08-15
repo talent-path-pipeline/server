@@ -1,21 +1,17 @@
-const Sequelize = require('sequelize');
-const UserModel = require('./user');
-const CourseModel = require('./courses');
-const lessonsModel = require('./lessons');
-const CandidateModel = require('./candidate');
-const RecruiterModel = require('./recruiter');
-const QuestionModel = require('./question');
-const CandidateLessonsModel = require('./candidateLessons');
-const PersonaModel = require('./persona');
-const PermissionModel = require('./permissions');
-const TagModel = require('./tag');
-const LessonTagModel = require('./lessonTags');
-const PathModel = require('./path');
+const { sequelize, Sequelize } = require('../config/config');
 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
-  host: process.env.DATABASE_URL,
-  dialect: 'postgres',
-});
+const UserModel = require('./accounts/user');
+const CourseModel = require('./learningResources/courses');
+const lessonsModel = require('./learningResources/lessons');
+const CandidateModel = require('./users/candidate');
+const RecruiterModel = require('./users/recruiter');
+const QuestionModel = require('./users/question');
+const CandidateLessonsModel = require('./users/candidateLessons');
+const PersonaModel = require('./accounts/persona');
+const PermissionModel = require('./accounts/permissions');
+const TagModel = require('./learningResources/tag');
+const LessonTagModel = require('./learningResources/lessonTags');
+const PathModel = require('./learningResources/path');
 
 const User = UserModel(sequelize, Sequelize);
 const Course = CourseModel(sequelize, Sequelize);
@@ -48,4 +44,5 @@ module.exports = {
   LessonTag,
   Path,
   sequelize,
+  Sequelize
 };
