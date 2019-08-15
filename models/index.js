@@ -1,14 +1,14 @@
 const { sequelize, Sequelize } = require('../config/config');
 
-const UserModel = require('./accounts/user');
+const UserModel = require('./authentication/user');
 const CourseModel = require('./learningResources/courses');
 const lessonsModel = require('./learningResources/lessons');
-const CandidateModel = require('./users/candidate');
-const RecruiterModel = require('./users/recruiter');
-const QuestionModel = require('./users/question');
-const CandidateLessonsModel = require('./users/candidateLessons');
-const PersonaModel = require('./accounts/persona');
-const PermissionModel = require('./accounts/permissions');
+const CandidateModel = require('./userResources/candidate');
+const RecruiterModel = require('./userResources/recruiter');
+const QuestionModel = require('./userResources/question');
+const CandidateLessonsModel = require('./userResources/candidateLessons');
+const PersonaModel = require('./authentication/persona');
+const PermissionModel = require('./authentication/permissions');
 const TagModel = require('./learningResources/tag');
 const LessonTagModel = require('./learningResources/lessonTags');
 const PathModel = require('./learningResources/path');
