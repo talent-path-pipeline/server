@@ -1,7 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const candidateLessons = (sequelize, type) => {
-  const { DataTypes } = Sequelize;
+const candidateLessons = (sequelize, { DataTypes }) => {
   const CandidateLessons = sequelize.define('candidateLessons', {
     // attributes
     uuid: {
