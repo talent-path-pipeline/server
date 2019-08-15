@@ -3,9 +3,9 @@ const { Sequelize } = require('sequelize');
 const path = (sequelize, type) => {
   const Path = sequelize.define('path', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     pathName: {

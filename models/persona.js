@@ -3,9 +3,9 @@ const { Sequelize } = require('sequelize');
 const persona = (sequelize, type) => {
   const Persona = sequelize.define('persona', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     persona: {

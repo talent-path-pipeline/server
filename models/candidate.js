@@ -1,11 +1,12 @@
 const { Sequelize } = require('sequelize');
 
 const candidate = (sequelize, type) => {
+  const { DataTypes } = Sequelize;
   const Candidate = sequelize.define('candidate', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     address: {
@@ -18,8 +19,14 @@ const candidate = (sequelize, type) => {
     },
     links: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
+    contactedBy: {
+      type: DataTypes.UUID,
+      allowNull: true,
+    },
+    /*
+    // removed for now
     completedPaths: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -32,10 +39,7 @@ const candidate = (sequelize, type) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    contactedBy: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
+     */
   });
 
   Candidate.associate = models => {

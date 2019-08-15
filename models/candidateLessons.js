@@ -1,23 +1,24 @@
 const { Sequelize } = require('sequelize');
 
 const candidateLessons = (sequelize, type) => {
+  const { DataTypes } = Sequelize;
   const CandidateLessons = sequelize.define('candidateLessons', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     candidate: {
-      type: Sequelize.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
     },
     lessons: {
-      type: Sequelize.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
     },
     timestamp: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATE,
       allowNull: false,
     },
   });

@@ -1,19 +1,20 @@
 const { Sequelize } = require('sequelize');
 
 const lessonTag = (sequelize, type) => {
+  const { DataTypes } = Sequelize;
   const LessonTag = sequelize.define('lessonTags', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     tag: {
-      type: Sequelize.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
     },
     lesson: {
-      type: Sequelize.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
     },
   });

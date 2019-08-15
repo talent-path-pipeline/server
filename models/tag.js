@@ -3,9 +3,9 @@ const { Sequelize } = require('sequelize');
 const tag = (sequelize, type) => {
   const Tag = sequelize.define('tag', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     tag: {

@@ -3,9 +3,9 @@ const { Sequelize } = require('sequelize');
 const recruiter = (sequelize, type) => {
   const Recruiter = sequelize.define('recruiter', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     jobTitle: {

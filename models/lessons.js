@@ -1,11 +1,12 @@
 const { Sequelize } = require('sequelize');
 
 const lesson = (sequelize, type) => {
+  const { DataTypes } = Sequelize;
   const Lesson = sequelize.define('lesson', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     videoURL: {
@@ -29,7 +30,7 @@ const lesson = (sequelize, type) => {
       allowNull: false,
     },
     instructorID: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
     },
   });

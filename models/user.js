@@ -4,9 +4,9 @@ const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 const user = (sequelize, type) => {
   const User = sequelize.define('user', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     email: {

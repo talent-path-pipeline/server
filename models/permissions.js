@@ -3,9 +3,9 @@ const { Sequelize } = require('sequelize');
 const permission = (sequelize, type) => {
   const Permission = sequelize.define('permission', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     permission: {

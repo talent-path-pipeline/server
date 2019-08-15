@@ -3,9 +3,9 @@ const { Sequelize } = require('sequelize');
 const course = (sequelize, type) => {
   const Course = sequelize.define('course', {
     // attributes
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+    uuid: {
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
     courseName: {
