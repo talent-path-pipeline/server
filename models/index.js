@@ -1,30 +1,41 @@
+/**
+ *  index.js
+ *  Converts all the models into database tables using Sequalize.
+ */
+
 const { sequelize, Sequelize } = require('../config/config');
 
-const UserModel = require('./authentication/user');
-const CourseModel = require('./learning-resources/courses');
-const lessonsModel = require('./learning-resources/lessons');
-const CandidateModel = require('./userResources/candidate');
-const RecruiterModel = require('./userResources/recruiter');
-const QuestionModel = require('./userResources/question');
-const CandidateLessonsModel = require('./userResources/candidateLessons');
-const PersonaModel = require('./authentication/persona');
-const PermissionModel = require('./authentication/permissions');
-const TagModel = require('./learning-resources/tag');
-const LessonTagModel = require('./learning-resources/lessonTags');
-const PathModel = require('./learning-resources/path');
+// authentication
+const UserModel = require('./authentication/User');
+const PermissionModel = require('./authentication/Permissions');
+const PersonaModel = require('./authentication/Persona');
+// learning-resources
+const CourseModel = require('./learning-resources/Courses');
+const LessonsModel = require('./learning-resources/Lessons');
+const TagModel = require('./learning-resources/Tag');
+const LessonTagModel = require('./learning-resources/LessonTags');
+const PathModel = require('./learning-resources/Path');
+// user-resource
+const CandidateModel = require('./user-resources/Candidate');
+const RecruiterModel = require('./user-resources/Recruiter');
+const QuestionModel = require('./user-resources/Question');
+const CandidateLessonsModel = require('./user-resources/CandidateLessons');
 
+// authentication
 const User = UserModel(sequelize, Sequelize);
+const Permission = PermissionModel(sequelize, Sequelize);
+const Persona = PersonaModel(sequelize, Sequelize);
+// learning-resources
 const Course = CourseModel(sequelize, Sequelize);
-const Lesson = lessonsModel(sequelize, Sequelize);
+const Lesson = LessonsModel(sequelize, Sequelize);
+const Tag = TagModel(sequelize, Sequelize);
+const LessonTag = LessonTagModel(sequelize, Sequelize);
+const Path = PathModel(sequelize, Sequelize);
+// user-resources
 const Candidate = CandidateModel(sequelize, Sequelize);
 const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
-const Persona = PersonaModel(sequelize, Sequelize);
-const Permission = PermissionModel(sequelize, Sequelize);
-const Tag = TagModel(sequelize, Sequelize);
-const LessonTag = LessonTagModel(sequelize, Sequelize);
-const Path = PathModel(sequelize, Sequelize);
 
 sequelize.sync({ force: true }).then(() => {
   console.log(`Database & Tables created`);
