@@ -7,8 +7,8 @@ const { sequelize } = require('./models');
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 app.use('/', require('./routes'));
-// app.use(express.json());
 
 sequelize.sync().then(() => {
   app.listen(process.env.PORT || 5000, () => {
