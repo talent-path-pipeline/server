@@ -8,24 +8,34 @@ module.exports = (sequelize, type) =>
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
+        autoIncrement: !0,
+        primaryKey: true
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
+      },
+      salt: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      token: {
+        type: Sequelize.STRING(500),
+        allowNull: true
       },
       fullName: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       persona: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
+        allowNull: false
+      }
     },
     {
       // options
