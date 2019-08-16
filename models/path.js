@@ -15,7 +15,7 @@ const path = (sequelize, type) => {
   });
 
   Path.associate = models => {
-    Path.belongsToMany(models.Lesson);
+    Path.hasMany(models.Lesson);
   };
 };
 

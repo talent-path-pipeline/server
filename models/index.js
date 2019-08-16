@@ -1,15 +1,15 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./user');
-const CourseModel = require('./courses');
-const lessonsModel = require('./lessons');
+const CourseModel = require('./course');
+const lessonModel = require('./lesson');
 const CandidateModel = require('./candidate');
 const RecruiterModel = require('./recruiter');
 const QuestionModel = require('./question');
-const CandidateLessonsModel = require('./candidateLessons');
+const CandidateLessonModel = require('./candidateLesson');
 const PersonaModel = require('./persona');
-const PermissionModel = require('./permissions');
+const PermissionModel = require('./permission');
 const TagModel = require('./tag');
-const LessonTagModel = require('./lessonTags');
+const LessonTagModel = require('./lessonTag');
 const PathModel = require('./path');
 
 const sequelize = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
@@ -18,11 +18,11 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER,
 
 const User = UserModel(sequelize, Sequelize);
 const Course = CourseModel(sequelize, Sequelize);
-const Lesson = lessonsModel(sequelize, Sequelize);
+const Lesson = lessonModel(sequelize, Sequelize);
 const Candidate = CandidateModel(sequelize, Sequelize);
 const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
-const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
+const CandidateLesson = CandidateLessonModel(sequelize, Sequelize);
 const Persona = PersonaModel(sequelize, Sequelize);
 const Permission = PermissionModel(sequelize, Sequelize);
 const Tag = TagModel(sequelize, Sequelize);
@@ -40,7 +40,7 @@ module.exports = {
   Candidate,
   Recruiter,
   Question,
-  CandidateLessons,
+  CandidateLesson,
   Persona,
   Permission,
   Tag,

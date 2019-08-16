@@ -1,31 +1,33 @@
 const { Sequelize } = require('sequelize');
 
-const candidateLessons = (sequelize, { DataTypes }) => {
-  const CandidateLessons = sequelize.define('candidateLessons', {
+const candidateLesson = (sequelize, { DataTypes }) => {
+  const CandidateLesson = sequelize.define('candidateLesson', {
     // attributes
     uuid: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
+    /*
+    // auto generated for join table?
     candidate: {
       type: DataTypes.UUID,
       allowNull: false,
     },
-    lessons: {
+    lesson: {
       type: DataTypes.UUID,
       allowNull: false,
-    },
+    }, */
     timestamp: {
       type: Sequelize.DATE,
       allowNull: false,
     },
   });
 
-  CandidateLessons.associate = models => {
-    CandidateLessons.belongsToMany(models.Lesson);
-    CandidateLessons.belongsToMany(models.Candidate);
-  };
+  // CandidateLesson.associate = models => {
+  //   CandidateLesson.belongsToMany(models.Lesson);
+  //   CandidateLesson.belongsToMany(models.Candidate);
+  // };
 };
 
-module.exports = candidateLessons;
+module.exports = candidateLesson;

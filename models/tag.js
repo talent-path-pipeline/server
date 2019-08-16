@@ -15,7 +15,7 @@ const tag = (sequelize, type) => {
   });
 
   Tag.associate = models => {
-    Tag.belongsToMany(models.LessonTag);
+    Tag.belongsToMany(models.Lesson, { through: models.LessonTag });
   };
 };
 

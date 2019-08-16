@@ -35,11 +35,11 @@ const lesson = (sequelize, { DataTypes }) => {
   });
 
   Lesson.associate = models => {
-    Lesson.hasMany(models.LessonTag);
-    Lesson.hasMany(models.Course);
-    Lesson.hasMany(models.Path);
-    Lesson.belongsToMany(models.CandidateLesson);
-    Lesson.belongsToMany(models.User);
+    Lesson.belongsToMany(models.Candidate, { through: models.CandidateLesson });
+    Lesson.belongsToMany(models.Tag, { through: models.LessonTag });
+    Lesson.belongsTo(models.User);
+    Lesson.belongsTo(models.Course);
+    Lesson.belongsTo(models.Path);
   };
 };
 

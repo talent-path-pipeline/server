@@ -15,8 +15,8 @@ const persona = (sequelize, type) => {
   });
 
   Persona.associate = models => {
-    Persona.hasMany(models.Permission);
-    Persona.belongsTo(models.User);
+    Persona.hasMany(models.User);
+    Persona.belongsTo(models.Permission);
   };
 };
 

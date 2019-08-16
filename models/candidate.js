@@ -42,10 +42,10 @@ const candidate = (sequelize, { DataTypes }) => {
   });
 
   Candidate.associate = models => {
-    Candidate.hasMany(models.Question);
-    Candidate.belongsTo(models.Recruiter);
-    Candidate.hasOne(models.User);
-    Candidate.belongsToMany(models.CandidateLessons);
+    Candidate.belongsTo(models.User);
+    Candidate.belongsTo(models.Recruiter, { foreignKey: 'contactedBy' });
+    Candidate.belongsTo(models.Question);
+    Candidate.belongsToMany(models.CandidateLesson, { through: models.CandidateLesson });
   };
 };
 

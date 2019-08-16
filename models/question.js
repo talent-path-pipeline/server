@@ -15,7 +15,7 @@ const question = (sequelize, type) => {
   });
 
   Question.associate = models => {
-    Question.belongsToMany(models.Candidate);
+    Question.hasMany(models.Candidate);
   };
 };
 

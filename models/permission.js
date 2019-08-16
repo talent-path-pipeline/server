@@ -15,7 +15,7 @@ const permission = (sequelize, type) => {
   });
 
   Permission.associate = models => {
-    Permission.belongsToMany(models.Persona);
+    Permission.hasMany(models.Persona);
   };
 };
 

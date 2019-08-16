@@ -29,10 +29,8 @@ const user = (sequelize, type) => {
 
   // associations here
   User.associate = models => {
-    User.hasMany(models.Lesson);
-    User.hasMany(models.Persona);
-    User.belongsTo(models.Candidate);
-    User.belongsTo(models.Recruiter);
+    User.hasMany(models.Lesson, { foreignKey: 'creator' });
+    User.belongsTo(models.Persona);
   };
 
   return User;

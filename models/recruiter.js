@@ -15,7 +15,8 @@ const recruiter = (sequelize, type) => {
   });
 
   Recruiter.associate = models => {
-    Recruiter.hasMany(models.User);
+    Recruiter.hasMany(models.Candidate, { foreignKey: 'contactedBy' });
+    Recruiter.belongsTo(models.User);
   };
 };
 
