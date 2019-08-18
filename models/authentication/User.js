@@ -32,6 +32,10 @@ module.exports = (sequelize, type) =>
         type: Sequelize.STRING,
         allowNull: false
       },
+      location: {
+        type: Sequelize.STRING(500),
+        allowNull: true
+      },
       persona: {
         type: Sequelize.STRING,
         allowNull: false

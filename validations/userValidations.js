@@ -4,6 +4,7 @@
  */
 const constraints = {
   email: {
+    email: true,
     presence: true,
     length: { minimum: 3 },
     exclusion: {
@@ -18,6 +19,9 @@ const constraints = {
   fullName: {
     presence: true,
     length: { minimum: 1 }
+  },
+  location: {
+    length: { minimum: 2 }
   }
 };
 
