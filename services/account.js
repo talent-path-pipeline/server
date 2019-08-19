@@ -31,17 +31,13 @@ async function registerUser({ email, fullName, password, location, persona }) {
  * @returns {string} JWT Token
  */
 async function loginUser({ email, password }) {
-  console.log(`In account services: ${email} and ${password}`);
   try {
     if (!(await userExists(email))) {
       throw new ErrorWithHTTPStatus('User does not exists.', 400);
     }
     const { id, persona } = await checkPassword(email, password);
     const token = await createToken(id, persona);
-    console.log(`Token Generated: ${token}`);
-    // Storing Token
     await storeToken(id, token);
-    // Return token
     return token;
   } catch (err) {
     throw err;

@@ -4,14 +4,15 @@ const { sequelize, Sequelize } = require('../config/config');
 const User = UserModel(sequelize, Sequelize);
 
 /**
- * User.js
- * @description: Contains all functions related to authentication.
+ * userExists
+ * @description: Checks if the email already exists in the database
+ * @param {string} email
  */
-async function userExists(identifier) {
+async function userExists(email) {
   try {
     const result = await User.findOne({
       where: {
-        email: identifier
+        email
       }
     });
     return result !== null;
@@ -19,6 +20,16 @@ async function userExists(identifier) {
     throw err;
   }
 }
+/**
+ * createUser
+ * @description Stores user data in the database
+ * @param {string} email
+ * @param {string} password
+ * @param {string} salt
+ * @param {string} fullName
+ * @param {string} location
+ * @param {string} persona
+ */
 async function createUser(email, password, salt, fullName, location, persona) {
   try {
     await User.create({
@@ -35,11 +46,11 @@ async function createUser(email, password, salt, fullName, location, persona) {
 }
 /**
  * getPassword
- * @description Gets user hashed password and salt
+ * @description Gets user data.
  * @param {string} email
  * @returns {object} An object containing hash and salt
  */
-async function getPassword(email) {
+async function getUser(email) {
   try {
     return await User.findOne({
       where: {
@@ -63,4 +74,4 @@ async function storeToken(id, token) {
     throw err;
   }
 }
-module.exports = { userExists, createUser, getPassword, storeToken };
+module.exports = { userExists, createUser, getUser, storeToken };
