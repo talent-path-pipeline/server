@@ -1,23 +1,21 @@
 const validate = require('validate.js');
-const { registerUser } = require('../services/account');
-const { constraints } = require('../validations/userValidations');
+const { registerUser, loginUser } = require('../services/account');
+const {
+  registrationConstraints,
+  loginConstraints
+} = require('../validations/userValidations');
 const ErrorWithHTTPStatus = require('../utils/errorWithHTTPStatus');
 
 exports.register = async (request, response, next) => {
-  const { body } = request;
   try {
-    const result = validate(body, constraints);
+    const { body } = request;
+    const result = validate(body, registrationConstraints);
     if (result !== undefined) {
       throw new ErrorWithHTTPStatus('Invalid data received.', 400);
     }
-    const user = {
-      email: body.email,
-      password: body.password,
-      fullName: body.fullName,
-      location: body.location,
-      persona: 'candidate'
-    };
-    await registerUser(user);
+    // Appending persona for candidate user (default)
+    body.persona = 'candidate';
+    await registerUser(body);
     response.status(200).send('Registration Successful.');
   } catch (err) {
     next(err);
@@ -25,7 +23,19 @@ exports.register = async (request, response, next) => {
 };
 
 exports.login = async (request, response, next) => {
-  response
-    .status(200)
-    .send('You have made it to the login function in user controller.');
+  try {
+    const { body } = request;
+    const result = validate(body, loginConstraints);
+    if (result !== undefined) {
+      throw new ErrorWithHTTPStatus('Invalid data received.', 400);
+    }
+    const token = await loginUser(body);
+
+    response
+      .status(200)
+      .set('Content-access_token', token)
+      .send('Login Successful.');
+  } catch (err) {
+    next(err);
+  }
 };

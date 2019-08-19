@@ -1,5 +1,7 @@
 const hashPassword = require('../utils/hashPasswords');
-const { userExists, createUser } = require('../db/user');
+const checkPassword = require('../utils/checkPassword');
+const { userExists, createUser, storeToken } = require('../db/user');
+const createToken = require('../utils/generateToken');
 const ErrorWithHTTPStatus = require('../utils/errorWithHTTPStatus');
 /**
  * account.js
@@ -7,6 +9,7 @@ const ErrorWithHTTPStatus = require('../utils/errorWithHTTPStatus');
  * @param {string} email
  * @param {string} fullName
  * @param {string} password
+ * @param {string} location
  * @param {string} persona
  */
 async function registerUser({ email, fullName, password, location, persona }) {
@@ -27,7 +30,21 @@ async function registerUser({ email, fullName, password, location, persona }) {
  * @param {string} password
  * @returns {string} JWT Token
  */
-async function loginUser() {
-  console.log('This is a placeholder for login service.');
+async function loginUser({ email, password }) {
+  console.log(`In account services: ${email} and ${password}`);
+  try {
+    if (!(await userExists(email))) {
+      throw new ErrorWithHTTPStatus('User does not exists.', 400);
+    }
+    const { id, persona } = await checkPassword(email, password);
+    const token = await createToken(id, persona);
+    console.log(`Token Generated: ${token}`);
+    // Storing Token
+    await storeToken(id, token);
+    // Return token
+    return token;
+  } catch (err) {
+    throw err;
+  }
 }
 module.exports = { registerUser, loginUser };

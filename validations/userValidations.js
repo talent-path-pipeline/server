@@ -2,15 +2,11 @@
  * User Constraints
  * @description: Used with validation.js npm package to validate user registration data.
  */
-const constraints = {
+const registrationConstraints = {
   email: {
     email: true,
     presence: true,
-    length: { minimum: 3 },
-    exclusion: {
-      within: ['admin'],
-      message: "'%{value}' is not allowed"
-    }
+    length: { minimum: 3 }
   },
   password: {
     presence: true,
@@ -25,4 +21,15 @@ const constraints = {
   }
 };
 
-module.exports = { constraints };
+const loginConstraints = {
+  email: {
+    email: true,
+    presence: true,
+    length: { minimum: 3 }
+  },
+  password: {
+    presence: true,
+    length: { minimum: 8 }
+  }
+};
+module.exports = { registrationConstraints, loginConstraints };
