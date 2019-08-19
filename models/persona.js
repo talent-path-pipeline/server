@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const persona = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const Persona = sequelize.define('persona', {
     // attributes
     uuid: {
@@ -19,5 +19,3 @@ const persona = (sequelize, type) => {
     Persona.belongsTo(models.Permission);
   };
 };
-
-module.exports = persona;

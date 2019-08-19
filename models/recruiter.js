@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const recruiter = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const Recruiter = sequelize.define('recruiter', {
     // attributes
     uuid: {
@@ -19,5 +19,3 @@ const recruiter = (sequelize, type) => {
     Recruiter.belongsTo(models.User);
   };
 };
-
-module.exports = recruiter;

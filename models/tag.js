@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const tag = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const Tag = sequelize.define('tag', {
     // attributes
     uuid: {
@@ -18,5 +18,3 @@ const tag = (sequelize, type) => {
     Tag.belongsToMany(models.Lesson, { through: models.LessonTag });
   };
 };
-
-module.exports = tag;

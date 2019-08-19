@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const lesson = (sequelize, { DataTypes }) => {
+module.exports = (sequelize, { DataTypes }) => {
   const Lesson = sequelize.define('lesson', {
     // attributes
     uuid: {
@@ -42,5 +42,3 @@ const lesson = (sequelize, { DataTypes }) => {
     Lesson.belongsTo(models.Path);
   };
 };
-
-module.exports = lesson;

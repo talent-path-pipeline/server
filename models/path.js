@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const path = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const Path = sequelize.define('path', {
     // attributes
     uuid: {
@@ -18,5 +18,3 @@ const path = (sequelize, type) => {
     Path.hasMany(models.Lesson);
   };
 };
-
-module.exports = path;

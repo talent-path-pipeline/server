@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const question = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const Question = sequelize.define('question', {
     // attributes
     uuid: {
@@ -18,5 +18,3 @@ const question = (sequelize, type) => {
     Question.hasMany(models.Candidate);
   };
 };
-
-module.exports = question;

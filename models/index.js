@@ -1,16 +1,16 @@
 const Sequelize = require('sequelize');
-const UserModel = require('./user');
-const CourseModel = require('./course');
-const lessonModel = require('./lesson');
-const CandidateModel = require('./candidate');
-const RecruiterModel = require('./recruiter');
-const QuestionModel = require('./question');
-const CandidateLessonModel = require('./candidateLesson');
-const PersonaModel = require('./persona');
-const PermissionModel = require('./permission');
-const TagModel = require('./tag');
-const LessonTagModel = require('./lessonTag');
-const PathModel = require('./path');
+const UserModel = require('./User');
+const CourseModel = require('./Course');
+const LessonModel = require('./Lesson');
+const CandidateModel = require('./Candidate');
+const RecruiterModel = require('./Recruiter');
+const QuestionModel = require('./Question');
+const CandidateLessonModel = require('./CandidateLesson');
+const PersonaModel = require('./Persona');
+const PermissionModel = require('./Permission');
+const TagModel = require('./Tag');
+const LessonTagModel = require('./LessonTag');
+const PathModel = require('./Path');
 
 const sequelize = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
   dialect: 'postgres',
@@ -18,7 +18,7 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER,
 
 const User = UserModel(sequelize, Sequelize);
 const Course = CourseModel(sequelize, Sequelize);
-const Lesson = lessonModel(sequelize, Sequelize);
+const Lesson = LessonModel(sequelize, Sequelize);
 const Candidate = CandidateModel(sequelize, Sequelize);
 const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);

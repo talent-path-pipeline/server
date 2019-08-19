@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const permission = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const Permission = sequelize.define('permission', {
     // attributes
     uuid: {
@@ -18,5 +18,3 @@ const permission = (sequelize, type) => {
     Permission.hasMany(models.Persona);
   };
 };
-
-module.exports = permission;

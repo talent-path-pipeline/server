@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
-const user = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const User = sequelize.define('user', {
     // attributes
     uuid: {
@@ -35,17 +35,3 @@ const user = (sequelize, type) => {
 
   return User;
 };
-
-// /** Create */
-// exports.insert = async ({ email, password, fullName, persona }) => {
-//   try {
-//     if (!email || !password || !fullName || !persona) {
-//       throw new ErrorWithHTTPStatus('Missing Properties', 400);
-//     }
-//     user.create({ email, password, fullName, persona }).then(jane => {
-//       console.log("Jane's auto-generated ID:", jane.id);
-//     });
-//   } catch (error) {}
-// };
-
-module.exports = user;

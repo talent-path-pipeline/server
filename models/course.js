@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const course = (sequelize, type) => {
+module.exports = (sequelize, type) => {
   const Course = sequelize.define('course', {
     // attributes
     uuid: {
@@ -18,5 +18,3 @@ const course = (sequelize, type) => {
     Course.hasMany(models.Lesson);
   };
 };
-
-module.exports = course;
