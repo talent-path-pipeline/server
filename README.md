@@ -1,3 +1,18 @@
+### Naming conventions:
+
+- **Classes/Components**: Pascal case (e.g. `HomePage.js`)
+- **Variables**: Snake case (e.g. `my_awesome_variable = 5`)
+- **Constants**: Caps case (e.g. `const GLOBAL_VARIABLE = 'a global string`)
+- **Folders**: Kebab case (e.g. `i-am-a-folder`)
+- **Functions**: Camel Case (e.g. `doSomethingPlease(input)`)
+- **Git Branches**: Kebab case with a descriptive name and prefaced by an 's' the number of the issue it deals with (e.g. for `server issue #11: "AaD, I want to create associations between tables` the branch should be named something like `s11-table-associations`).
+
+### Style consistency
+
+We are using VSCode for development with the ESLint and Prettier extensions for consistency. Configuration files for both extensions are included in the root of this repository. If contributing, please either install those extensions or read through them and ensure your code complies with the rules listed.
+
+---
+
 # Server
 
 > Talent Path Pipeline Back-end
