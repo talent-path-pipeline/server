@@ -37,6 +37,28 @@ const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
 
+// associations dump
+User.hasMany(Lesson, { foreignKey: 'creator' });
+User.belongsTo(Persona);
+Persona.hasMany(User);
+Persona.belongsTo(Permission);
+Permission.hasMany(Persona);
+Course.hasMany(Lesson);
+Lesson.belongsToMany(Candidate, { through: CandidateLessons });
+Lesson.belongsToMany(Tag, { through: LessonTag });
+Lesson.belongsTo(User);
+Lesson.belongsTo(Course);
+Lesson.belongsTo(Path);
+Tag.belongsToMany(Lesson, { through: LessonTag });
+Path.hasMany(Lesson);
+Candidate.belongsTo(User);
+Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
+Candidate.belongsTo(Question);
+Candidate.belongsToMany(CandidateLessons, { through: CandidateLessons });
+Question.hasMany(Candidate);
+Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
+Recruiter.belongsTo(User);
+
 sequelize.sync({ force: true }).then(() => {
   console.log(`Database & Tables created`);
 });
@@ -55,5 +77,5 @@ module.exports = {
   LessonTag,
   Path,
   sequelize,
-  Sequelize
+  Sequelize,
 };

@@ -5,9 +5,9 @@ module.exports = (sequelize, type) =>
     'candidateLessons',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
       candidate: {
@@ -19,7 +19,7 @@ module.exports = (sequelize, type) =>
         allowNull: false,
       },
       timestamp: {
-        type: Sequelize.STRING,
+        type: Sequelize.DATE,
         allowNull: false,
       },
     },

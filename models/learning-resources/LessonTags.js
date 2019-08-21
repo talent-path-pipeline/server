@@ -5,18 +5,10 @@ module.exports = (sequelize, type) =>
     'lessonTags',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-      },
-      tag: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      lesson: {
-        type: Sequelize.STRING,
-        allowNull: false,
       },
     },
     {

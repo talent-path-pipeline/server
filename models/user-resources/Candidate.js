@@ -5,9 +5,9 @@ module.exports = (sequelize, type) =>
     'candidate',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
       address: {
@@ -20,7 +20,11 @@ module.exports = (sequelize, type) =>
       },
       links: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
+      },
+      contactedBy: {
+        type: Sequelize.UUID,
+        allowNull: true,
       },
       completedPaths: {
         type: Sequelize.STRING,
@@ -31,10 +35,6 @@ module.exports = (sequelize, type) =>
         allowNull: false,
       },
       completedLessons: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      contactedBy: {
         type: Sequelize.STRING,
         allowNull: false,
       },
