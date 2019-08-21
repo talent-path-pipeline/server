@@ -79,3 +79,4 @@ typings/
 .dynamodb/ 
 # Mac Reasons
 .DS_STORE
+.vscode
