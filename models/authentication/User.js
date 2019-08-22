@@ -4,33 +4,31 @@ module.exports = (sequelize, type) =>
   sequelize.define(
     'user',
     {
-      // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: !0,
-        primaryKey: true
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true,
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       salt: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       token: {
         type: Sequelize.STRING(500),
-        allowNull: true
+        allowNull: true,
       },
       fullName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       location: {
         type: Sequelize.STRING(500),
@@ -38,8 +36,8 @@ module.exports = (sequelize, type) =>
       },
       persona: {
         type: Sequelize.STRING,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     },
     {
       // options

@@ -12,6 +12,13 @@ const { sequelize } = require('./models');
 passport.use(JWTStrategy);
 const app = express();
 
+// Logs requests to the console
+// app.use(logger('dev'));
+
+// Parse incoming requests data
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cors());
 app.use(passport.initialize());
 app.use(express.json());
