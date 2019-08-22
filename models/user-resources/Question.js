@@ -5,12 +5,12 @@ module.exports = (sequelize, type) =>
     'question',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
-      question: {
+      question1: {
         type: Sequelize.STRING,
         allowNull: false,
       },

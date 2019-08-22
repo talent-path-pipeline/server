@@ -1,10 +1,20 @@
 require('dotenv/config');
 const express = require('express');
 const cors = require('cors');
+// const logger = require('morgan');
+// const bodyParser = require('body-parser');
 
 const { sequelize } = require('./models');
 
+// Setup the express app
 const app = express();
+
+// Logs requests to the console
+// app.use(logger('dev'));
+
+// Parse incoming requests data
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 app.use('/', require('./routes'));

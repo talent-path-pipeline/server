@@ -5,9 +5,9 @@ module.exports = (sequelize, type) =>
     'persona',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
       persona: {
