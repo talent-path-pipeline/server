@@ -17,7 +17,6 @@ const SALT_ROUNDS = 10;
  * @description: Takes in a string password and hashes it using bcrypt library.
  * @param {string} password Password used to register / login
  * @returns {Hash&Salt} The hash and salt
- * @author Roberto Sanchez
  */
 async function hashPassword(password) {
   try {

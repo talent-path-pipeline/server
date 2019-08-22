@@ -33,7 +33,7 @@ exports.login = async (request, response, next) => {
 
     response
       .status(200)
-      .set('Content-access_token', token)
+      .set('token', `Bearer ${token}`)
       .send('Login Successful.');
   } catch (err) {
     next(err);

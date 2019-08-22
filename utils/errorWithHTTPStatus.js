@@ -1,6 +1,6 @@
 /**
- *  Error object containing user friendly message and
- *  a HTTP status.
+ * @description Error object containing user friendly message and a HTTP status. This code was pulled from Snippets server.
+ *
  */
 class ErrorWithHttpStatus extends Error {
   /**

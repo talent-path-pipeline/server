@@ -3,6 +3,7 @@
  * @description: Index file for the routes used for this application.
  */
 const router = require('express').Router();
+const passport = require('passport');
 
 /**
  * Test route
@@ -32,8 +33,11 @@ router.use('/api/user', require('./public/user'));
  * @description: Handles all routes for the dashboard.
  * Note: Passport will be inserted into this route in a future date.
  */
-router.use('/api/dashboard', require('./private/dashboard'));
-
+router.use(
+  '/api/dashboard',
+  passport.authenticate('jwt', { session: false }),
+  require('./private/dashboard')
+);
 /**
  * Lesson routes
  * @description: Handles all routes for lessons.

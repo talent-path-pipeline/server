@@ -15,4 +15,10 @@ router.get('/', (req, res) => {
       'This is a protected route. You should only see this if you are authenticated in.'
     );
 });
+/**
+ * Another dummy route. Used to test authentication
+ */
+router.get('/apple', function(req, res) {
+  res.json({ message: 'Success! You can not see this without a token!' });
+});
 module.exports = router;

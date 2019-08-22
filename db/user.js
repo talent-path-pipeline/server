@@ -62,6 +62,22 @@ async function getUser(email) {
   }
 }
 /**
+ * Finds and returns user token of already logged in user
+ * @param {string} id The stored id in the JWT that corresponds with a user.
+ */
+async function getUserToken(id) {
+  try {
+    const result = await User.findOne({
+      where: {
+        id
+      }
+    });
+    return { token: result.token, id: result.id };
+  } catch (err) {
+    throw err;
+  }
+}
+/**
  * storeToken
  * @description Stores token in the user's database
  * @param {string} email
@@ -74,4 +90,4 @@ async function storeToken(id, token) {
     throw err;
   }
 }
-module.exports = { userExists, createUser, getUser, storeToken };
+module.exports = { userExists, createUser, getUser, storeToken, getUserToken };
