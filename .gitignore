@@ -75,8 +75,9 @@ typings/
 # FuseBox cache
 .fusebox/
 
-#DynamoDB Local files 
+# DynamoDB Local files 
 .dynamodb/ 
-# Mac Reasons
+
+# Misc
 .DS_STORE
 .vscode
