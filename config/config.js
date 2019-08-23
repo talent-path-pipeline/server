@@ -14,7 +14,7 @@ const sequelize = new Sequelize(
   {
     host: process.env.DATABASE_URL,
     dialect: 'postgres',
-    logging: true
+    logging: false,
   }
 );
 module.exports = { sequelize, Sequelize };

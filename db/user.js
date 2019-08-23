@@ -12,8 +12,8 @@ async function userExists(email) {
   try {
     const result = await User.findOne({
       where: {
-        email
-      }
+        email,
+      },
     });
     return result !== null;
   } catch (err) {
@@ -38,7 +38,7 @@ async function createUser(email, password, salt, fullName, location, persona) {
       salt,
       fullName,
       location,
-      persona
+      persona,
     });
   } catch (err) {
     throw err;
@@ -54,8 +54,8 @@ async function getUser(email) {
   try {
     return await User.findOne({
       where: {
-        email
-      }
+        email,
+      },
     });
   } catch (err) {
     throw err;
@@ -69,10 +69,10 @@ async function getUserToken(id) {
   try {
     const result = await User.findOne({
       where: {
-        id
-      }
+        uuid:id,
+      },
     });
-    return { token: result.token, id: result.id };
+    return { token: result.token, id: result.uuid };
   } catch (err) {
     throw err;
   }
@@ -83,9 +83,9 @@ async function getUserToken(id) {
  * @param {string} email
  * @param {string} token
  */
-async function storeToken(id, token) {
+async function storeToken(uuid, token) {
   try {
-    await User.update({ token }, { where: { id } });
+    await User.update({ token }, { where: { uuid } });
   } catch (err) {
     throw err;
   }
