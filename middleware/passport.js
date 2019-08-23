@@ -10,14 +10,12 @@ opts.expiresIn = process.env.JWT_EXPIRATION_TIME;
 
 const JWTStrategy = new Strategy(opts, async (jwtPayload, done) => {
   try {
-    console.log(`These are values:${jwtPayload.id}`);
     const storedToken = await getUserToken(jwtPayload.id);
     if (storedToken.token) {
       return done(null, storedToken.id);
     }
     return done(null, false);
   } catch (err) {
-    console.error('SOMETHING WENT WRONG ON PASSPORTs')
     throw err;
   }
 });

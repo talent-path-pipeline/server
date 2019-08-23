@@ -36,7 +36,6 @@ async function loginUser({ email, password }) {
       throw new ErrorWithHTTPStatus('User does not exists.', 400);
     }
     const { uuid, persona } = await checkPassword(email, password);
-    console.log(`VALUE: ${uuid}`)
     const token = await createToken(uuid, persona);
     await storeToken(uuid, token);
     return token;
