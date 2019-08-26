@@ -2,7 +2,7 @@ const hashPassword = require('../utils/hashPasswords');
 const checkPassword = require('../utils/checkPassword');
 const { userExists, createUser, storeToken } = require('../db/user');
 const createToken = require('../utils/generateToken');
-const ErrorWithHTTPStatus = require('../utils/errorWithHTTPStatus');
+const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 /**
  * account.js
  * @description: Handles all actions for account information.

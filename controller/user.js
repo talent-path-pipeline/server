@@ -2,9 +2,9 @@ const validate = require('validate.js');
 const { registerUser, loginUser } = require('../services/account');
 const {
   registrationConstraints,
-  loginConstraints
+  loginConstraints,
 } = require('../validations/userValidations');
-const ErrorWithHTTPStatus = require('../utils/errorWithHTTPStatus');
+const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
 exports.register = async (request, response, next) => {
   try {

@@ -1,4 +1,4 @@
-const ErrorWithHTTPStatus = require('../utils/errorWithHTTPStatus');
+const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
 const errorHandler = (err, request, response, next) => {
   console.error(`From the middleware: ${err}`);

@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const { getUser } = require('../db/user');
-const ErrorWithHTTPStatus = require('../utils/errorWithHTTPStatus');
+const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 /**
  * Checks if password user passes in is the same as the one stored in the database
  * @param {string} email
