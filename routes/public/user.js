@@ -23,13 +23,13 @@ router.get('/:id', (req, res) => {
 
 /**
  *  [POST] /
- *  @description: Testing purposes
+ *  @description: Creates a candidate user
  */
 router.post('/', user.register);
 
 /**
  *  [POST] /login
- *  @description: Testing purposes
+ *  @description: Logins in a user
  */
 router.post('/login', user.login);
 

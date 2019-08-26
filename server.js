@@ -1,12 +1,15 @@
 require('dotenv/config');
+// Server and authentication modules
 const express = require('express');
+const passport = require('passport');
 const cors = require('cors');
-// const logger = require('morgan');
-// const bodyParser = require('body-parser');
-
+// Middleware
+const JWTStrategy = require('./middleware/passport');
+const errorHandler = require('./middleware/errorHandler');
+// Database Setup
 const { sequelize } = require('./models');
 
-// Setup the express app
+passport.use(JWTStrategy);
 const app = express();
 
 // Logs requests to the console
@@ -17,8 +20,11 @@ const app = express();
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
-app.use('/', require('./routes'));
-// app.use(express.json());
+app.use(passport.initialize());
+app.use(express.json());
+app.use('/', require('./routes/index.js'));
+
+app.use(errorHandler);
 
 sequelize.sync().then(() => {
   app.listen(process.env.PORT || 5000, () => {

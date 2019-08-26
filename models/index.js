@@ -36,7 +36,9 @@ const Candidate = CandidateModel(sequelize, Sequelize);
 const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
-
+/*
+ // Commented out for staging. This section is currently broken
+ 
 // associations dump
 User.hasMany(Lesson, { foreignKey: 'creator' });
 User.belongsTo(Persona);
@@ -58,7 +60,7 @@ Candidate.belongsToMany(CandidateLessons, { through: CandidateLessons });
 Question.hasMany(Candidate);
 Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
 Recruiter.belongsTo(User);
-
+*/
 sequelize.sync({ force: true }).then(() => {
   console.log(`Database & Tables created`);
 });
