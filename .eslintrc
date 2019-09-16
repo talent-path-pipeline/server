@@ -20,7 +20,7 @@
     "camelcase": "off",
     "comma-dangle": ["error", "always-multiline"],
     "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
-    "function-paren-newline": ["error", "multiline"],
+    "function-paren-newline": ["error", "consistent"], // should be multiline-arguments, but that isn't working for some reason
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "arrow-body-style": ["error", "as-needed"],
