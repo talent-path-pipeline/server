@@ -1,9 +1,10 @@
+const router = require('express').Router();
+const { addLesson } = require('../../controller/lessonController')
 /**
  *  lessons.js
  * @description: Contains all routes related to lesson functions.
  * @author: Kevin B.
  */
-const router = require('express').Router();
 
 /**
  *  [GET] /
@@ -25,9 +26,11 @@ router.get('/:id', (req, res) => {
  *  [POST] /
  *  @description: Testing purposes
  */
-router.post('/', (req, res) => {
-  res.send('Creating a lesson');
-});
+router.post('/', addLesson
+// (req, res) => {
+//   res.send('Creating a lesson');
+// }
+);
 
 /**
  *  [DELETE] /:id
