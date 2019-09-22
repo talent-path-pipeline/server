@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { addLesson } = require('../../controller/lessonController')
+const lessonController = require('../../controller/lessonController')
 /**
  *  lessons.js
  * @description: Contains all routes related to lesson functions.
@@ -10,42 +10,30 @@ const { addLesson } = require('../../controller/lessonController')
  *  [GET] /
  *  @description: Testing purposes
  */
-router.get('/', (req, res) => {
-  res.send('Getting list of lessons');
-});
+router.get('/', lessonController.getLessons);
 
 /**
  *  [GET] /:id
  *  @description: Testing purposes
  */
-router.get('/:id', (req, res) => {
-  res.send('Getting a single lesson');
-});
+router.get('/:id', lessonController.getLessonById);
 
 /**
  *  [POST] /
  *  @description: Testing purposes
  */
-router.post('/', addLesson
-// (req, res) => {
-//   res.send('Creating a lesson');
-// }
-);
+router.post('/', lessonController.addLesson);
 
 /**
  *  [DELETE] /:id
  *  @description: Testing purposes
  */
-router.delete('/:id', (req, res) => {
-  res.send('Deleting a lesson');
-});
+router.delete('/:id', lessonController.deleteLesson);
 
 /**
  *  [PATCH] /:id
  *  @description: Testing purposes
  */
-router.patch('/:id', (req, res) => {
-  res.send('Updating a lesson');
-});
+router.patch('/:id', lessonController.updateLesson);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 // const { Lesson } =require( '../routes/index');
 const { Lesson } = require('../models/index');
 
-exports.addLesson = (req,res) => {
+exports.addLesson = (req, res) => {
   // const { courseName, description, pathName, title, instructorID, videoURL } = req.body;
   Lesson.create(req.body)
     .then(() => {
@@ -11,4 +11,65 @@ exports.addLesson = (req,res) => {
       res.send(err);
     })
   // res.send('got POST request')
+}
+
+exports.getLessons = (req, res) => {
+  Lesson.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.send(err);
+    })
+}
+
+exports.getLessonById = (req, res) => {
+  Lesson.findAll({
+    where: {
+      uuid: req.params.id,
+    },
+  })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.send(err);
+    })
+}
+
+exports.deleteLesson = (req, res) => {
+  Lesson.destroy({
+    where: {
+      uuid: req.params.id,
+    },
+  })
+    .then(() => {
+      res.send('Lesson deleted')
+    })
+    .catch(err => {
+      res.send(err);
+    })
+}
+
+/*  {
+  title: "New Title",
+  author: "New person"
+
+  req.body.title
+  req.body.author
+ } */
+
+
+exports.updateLesson = (req, res) => {
+  Lesson.update(req.body, {
+    where: {
+      uuid: req.params.id,
+    },
+  })
+    .then(() => {
+      res.send('Lesson updated');
+    })
+    .catch(err => {
+      res.send(err)
+    })
 }
