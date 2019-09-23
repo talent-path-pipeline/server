@@ -9,8 +9,7 @@ exports.addLesson = (req, res) => {
     })
     .catch(err => {
       res.send(err);
-    })
-  // res.send('got POST request')
+    });
 }
 
 exports.getLessons = (req, res) => {
@@ -50,15 +49,6 @@ exports.deleteLesson = (req, res) => {
       res.send(err);
     })
 }
-
-/*  {
-  title: "New Title",
-  author: "New person"
-
-  req.body.title
-  req.body.author
- } */
-
 
 exports.updateLesson = (req, res) => {
   Lesson.update(req.body, {

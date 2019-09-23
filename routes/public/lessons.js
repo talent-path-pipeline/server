@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const lessonController = require('../../controller/lessonController')
+const lessonController = require('../../controllers/lessonController')
 /**
  *  lessons.js
  * @description: Contains all routes related to lesson functions.
