@@ -1,4 +1,4 @@
-const { Lesson } = require('../models/index');
+const { Course } = require('../models/index');
 
 exports.addLesson = (req, res) => {
   Lesson.create(req.body)

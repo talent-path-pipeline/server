@@ -3,41 +3,32 @@
  * @description: Contains all routes related to course functions.
  */
 const router = require('express').Router();
+const courseController = require('../../controllers/courseController');
 
 /**
  *  [GET] /
  *  @description: Testing purposes
  */
-router.get('/', (req, res) => {
-  res.send('Getting list of courses');
-});
+router.get('/', courseController.getAllCourses);
 /**
  *  [GET] /
  *  @description: Testing purposes
  */
-router.get('/:id', (req, res) => {
-  res.send('Getting a single course');
-});
+router.get('/:id',courseController.getCourseById);
 /**
  *  [POST] /
  *  @description: Testing purposes
  */
-router.post('/', (req, res) => {
-  res.send('Creating a course');
-});
+router.post('/', courseController.addCourse);
 /**
  *  [DELETE] /
  *  @description: Testing purposes
  */
-router.delete('/:id', (req, res) => {
-  res.send('Deleting a course');
-});
+router.delete('/:id', courseController.deleteCourse);
 /**
  *  [PATCH] /
  *  @description: Testing purposes
  */
-router.patch('/:id', (req, res) => {
-  res.send('Updating a course');
-});
+router.patch('/:id', courseController.updateCourse);
 
 module.exports = router;
