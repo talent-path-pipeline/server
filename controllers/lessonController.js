@@ -2,21 +2,21 @@ const { Lesson } = require('../models/index');
 
 exports.addLesson = (req, res) => {
   Lesson.create(req.body)
-    .then(() => {
-      res.send('data saved');
+    .then(data => {
+      res.status(200).send(data);
     })
     .catch(err => {
-      res.send(err);
+      res.status(400).send(err);
     });
 }
 
 exports.getLessons = (req, res) => {
   Lesson.findAll()
     .then(data => {
-      res.send(data);
+      res.status(200).send(data);
     })
     .catch(err => {
-      res.send(err);
+      res.status(400).send(err);
     })
 }
 
@@ -27,10 +27,10 @@ exports.getLessonById = (req, res) => {
     },
   })
     .then(data => {
-      res.send(data);
+      res.status(200).send(data);
     })
     .catch(err => {
-      res.send(err);
+      res.status(400).send(err);
     })
 }
 
@@ -44,20 +44,20 @@ exports.deleteLesson = (req, res) => {
       res.send('Lesson deleted')
     })
     .catch(err => {
-      res.send(err);
+      res.status(400).send(err);
     })
 }
 
 exports.updateLesson = (req, res) => {
+  if (!Object.keys(req.body).length) throw new Error('No body provided');
+
   Lesson.update(req.body, {
     where: {
       uuid: req.params.id,
     },
   })
-    .then(() => {
-      res.send('Lesson updated');
-    })
+    .then(() => res.status(200).send('Lesson updated'))
     .catch(err => {
-      res.send(err)
+      res.status(400).send(err);
     })
 }
