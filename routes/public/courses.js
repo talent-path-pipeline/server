@@ -7,27 +7,32 @@ const courseController = require('../../controllers/courseController');
 
 /**
  *  [GET] /
- *  @description: Testing purposes
+ *  @description: Get all courses
  */
 router.get('/', courseController.getCourses);
+
 /**
  *  [GET] /
- *  @description: Testing purposes
+ *  @description: Get course by id
  */
 router.get('/:id',courseController.getCourseById);
+
 /**
  *  [POST] /
- *  @description: Testing purposes
+ *  @description: Add new course
+ *  Field: courseName
  */
 router.post('/', courseController.addCourse);
+
 /**
  *  [DELETE] /
- *  @description: Testing purposes
+ *  @description: Delete course
  */
 router.delete('/:id', courseController.deleteCourse);
+
 /**
  *  [PATCH] /
- *  @description: Testing purposes
+ *  @description: Update course
  */
 router.patch('/:id', courseController.updateCourse);
 

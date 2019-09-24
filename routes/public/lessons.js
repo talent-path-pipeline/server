@@ -1,38 +1,39 @@
-const router = require('express').Router();
-const lessonController = require('../../controllers/lessonController');
 /**
  *  lessons.js
  * @description: Contains all routes related to lesson functions.
- * @author: Kevin B.
  */
+const router = require('express').Router();
+const lessonController = require('../../controllers/lessonController');
 
 /**
  *  [GET] /
- *  @description: Testing purposes
+ *  @description: Get all lessons
  */
 router.get('/', lessonController.getLessons);
 
 /**
  *  [GET] /:id
- *  @description: Testing purposes
+ *  @description: Get lesson by id
  */
 router.get('/:id', lessonController.getLessonById);
 
 /**
  *  [POST] /
- *  @description: Testing purposes
+ *  @description: Add new lesson
+ *  Fields: videoURL, title, description, courseName,
+ *  pathName, instructorID
  */
 router.post('/', lessonController.addLesson);
 
 /**
  *  [DELETE] /:id
- *  @description: Testing purposes
+ *  @description: Delete lesson
  */
 router.delete('/:id', lessonController.deleteLesson);
 
 /**
  *  [PATCH] /:id
- *  @description: Testing purposes
+ *  @description: Update lesson
  */
 router.patch('/:id', lessonController.updateLesson);
 
