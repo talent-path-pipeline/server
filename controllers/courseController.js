@@ -1,17 +1,17 @@
 const { Course } = require('../models/index');
 
-exports.addLesson = (req, res) => {
-  Lesson.create(req.body)
-    .then(() => {
-      res.send('data saved');
+exports.addCourse = (req, res) => {
+  Course.create(req.body)
+    .then(data => {
+      res.send(data);
     })
     .catch(err => {
       res.send(err);
     });
 }
 
-exports.getLessons = (req, res) => {
-  Lesson.findAll()
+exports.getCourses = (req, res) => {
+  Course.findAll()
     .then(data => {
       res.send(data);
     })
@@ -20,8 +20,8 @@ exports.getLessons = (req, res) => {
     })
 }
 
-exports.getLessonById = (req, res) => {
-  Lesson.findAll({
+exports.getCourseById = (req, res) => {
+  Course.findAll({
     where: {
       uuid: req.params.id,
     },
@@ -34,28 +34,28 @@ exports.getLessonById = (req, res) => {
     })
 }
 
-exports.deleteLesson = (req, res) => {
-  Lesson.destroy({
+exports.deleteCourse = (req, res) => {
+  Course.destroy({
     where: {
       uuid: req.params.id,
     },
   })
     .then(() => {
-      res.send('Lesson deleted')
+      res.send('Course deleted')
     })
     .catch(err => {
       res.send(err);
     })
 }
 
-exports.updateLesson = (req, res) => {
-  Lesson.update(req.body, {
+exports.updateCourse = (req, res) => {
+  Course.update(req.body, {
     where: {
       uuid: req.params.id,
     },
   })
     .then(() => {
-      res.send('Lesson updated');
+      res.send('Course updated');
     })
     .catch(err => {
       res.send(err)

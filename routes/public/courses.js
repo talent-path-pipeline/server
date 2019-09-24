@@ -9,7 +9,7 @@ const courseController = require('../../controllers/courseController');
  *  [GET] /
  *  @description: Testing purposes
  */
-router.get('/', courseController.getAllCourses);
+router.get('/', courseController.getCourses);
 /**
  *  [GET] /
  *  @description: Testing purposes
