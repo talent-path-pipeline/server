@@ -22,7 +22,7 @@ exports.register = async (request, response, next) => {
     response
       .status(200)
       .set('token', `Bearer ${token}`)
-      .send('Registration  & Login Successful.');
+      .send({message: 'Registration  & Login Successful.', token});
   } catch (err) {
     next(err);
   }
