@@ -1,7 +1,9 @@
 const { Course } = require('../models/index');
+const ErrorWithHttpStatus = require('../utils/error.httpStatus.utils');
 
 exports.addCourse = (req, res) => {
-  Course.create(req.body)
+  Course
+    .create(req.body)
     .then(data => {
       res.status(200).send(data);
     })
@@ -11,7 +13,10 @@ exports.addCourse = (req, res) => {
 }
 
 exports.getCourses = (req, res) => {
-  Course.findAll()
+  Course
+    .findAll({
+      where: req.query,
+    })
     .then(data => {
       res.status(200).send(data);
     })
@@ -21,11 +26,12 @@ exports.getCourses = (req, res) => {
 }
 
 exports.getCourseById = (req, res) => {
-  Course.findAll({
-    where: {
-      uuid: req.params.id,
-    },
-  })
+  Course
+    .findAll({
+      where: {
+        uuid: req.params.id,
+      },
+    })
     .then(data => {
       res.status(200).send(data);
     })
@@ -35,11 +41,12 @@ exports.getCourseById = (req, res) => {
 }
 
 exports.deleteCourse = (req, res) => {
-  Course.destroy({
-    where: {
-      uuid: req.params.id,
-    },
-  })
+  Course
+    .destroy({
+      where: {
+        uuid: req.params.id,
+      },
+    })
     .then(() => {
       res.send('Course deleted')
     })
@@ -49,14 +56,18 @@ exports.deleteCourse = (req, res) => {
 }
 
 exports.updateCourse = (req, res) => {
-  if (!Object.keys(req.body).length) throw new Error('No body provided');
+  if (!Object.keys(req.body).length) throw new ErrorWithHttpStatus('No body provided', 404);
 
-  Course.update(req.body, {
-    where: {
-      uuid: req.params.id,
-    },
-  })
-    .then(() => res.status(200).send('Lesson updated'))
+  Course
+    .update(req.body, {
+      where: {
+        uuid: req.params.id,
+      },
+    })
+    .then(data => {
+      const msg = data && data[0] ? 'Course updated' : 'No courses updated';
+      res.status(200).send(msg);
+    })
     .catch(err => {
       res.status(400).send(err);
     })
