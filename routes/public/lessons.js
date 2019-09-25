@@ -7,7 +7,7 @@ const lessonController = require('../../controllers/lessonController');
 
 /**
  *  [GET] /
- *  @description: Get all lessons
+ *  @description: Get lessons (with optional query filter)
  */
 router.get('/', lessonController.getLessons);
 

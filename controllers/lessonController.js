@@ -11,7 +11,9 @@ exports.addLesson = (req, res) => {
 }
 
 exports.getLessons = (req, res) => {
-  Lesson.findAll()
+  Lesson.findAll({
+    where: req.query,
+  })
     .then(data => {
       res.status(200).send(data);
     })
