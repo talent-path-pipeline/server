@@ -40,7 +40,7 @@ exports.login = async (request, response, next) => {
     response
       .status(200)
       .set('token', `Bearer ${token}`)
-      .send('Login Successful.');
+      .send({message: 'Registration  & Login Successful.', token});
   } catch (err) {
     next(err);
   }
