@@ -36,32 +36,32 @@ const Candidate = CandidateModel(sequelize, Sequelize);
 const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
-/*
- // Commented out for staging. This section is currently broken
- 
+
+// Commented out for staging. This section is currently broken
+
 // associations dump
-User.hasMany(Lesson, { foreignKey: 'creator' });
-User.belongsTo(Persona);
+// User.hasMany(Lesson, { foreignKey: 'creator' });
 Persona.hasMany(User);
-Persona.belongsTo(Permission);
-Permission.hasMany(Persona);
-Course.hasMany(Lesson);
-Lesson.belongsToMany(Candidate, { through: CandidateLessons });
-Lesson.belongsToMany(Tag, { through: LessonTag });
-Lesson.belongsTo(User);
-Lesson.belongsTo(Course);
-Lesson.belongsTo(Path);
-Tag.belongsToMany(Lesson, { through: LessonTag });
-Path.hasMany(Lesson);
-Candidate.belongsTo(User);
-Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
-Candidate.belongsTo(Question);
-Candidate.belongsToMany(CandidateLessons, { through: CandidateLessons });
-Question.hasMany(Candidate);
-Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
-Recruiter.belongsTo(User);
-*/
-sequelize.sync({ force: true }).then(() => {
+User.belongsTo(Persona, {foreignKey: 'personaType'});
+// Persona.belongsTo(Permission);
+// Permission.hasMany(Persona);
+// Course.hasMany(Lesson);
+// Lesson.belongsToMany(Candidate, { through: CandidateLessons });
+// Lesson.belongsToMany(Tag, { through: LessonTag });
+// Lesson.belongsTo(User);
+// Lesson.belongsTo(Course);
+// Lesson.belongsTo(Path);
+// Tag.belongsToMany(Lesson, { through: LessonTag });
+// Path.hasMany(Lesson);
+// Candidate.belongsTo(User);
+// Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
+// Candidate.belongsTo(Question);
+// Candidate.belongsToMany(CandidateLessons, { through: CandidateLessons });
+// Question.hasMany(Candidate);
+// Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
+// Recruiter.belongsTo(User);
+
+sequelize.sync({force: true}).then(() => {
   console.log(`Database & Tables created`);
 });
 
