@@ -21,10 +21,6 @@ module.exports = (sequelize, type) => sequelize.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
-    pathName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
     creator: {
       type: Sequelize.UUID,
       allowNull: false,

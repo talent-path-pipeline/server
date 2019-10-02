@@ -52,9 +52,9 @@ Lesson.belongsToMany(Candidate, { through: CandidateLessons });
 Candidate.belongsToMany(Lesson, { through: CandidateLessons });
 Lesson.belongsToMany(Tag, { through: LessonTag });
 Tag.belongsToMany(Lesson, { through: LessonTag });
+Lesson.belongsTo(Path);
+Path.hasMany(Lesson);
 
-// Lesson.belongsTo(Path);
-// Path.hasMany(Lesson);
 // Candidate.belongsTo(User);
 // Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
 // Candidate.belongsTo(Question);
