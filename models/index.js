@@ -40,18 +40,6 @@ const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
 // Commented out for staging. This section is currently broken
 
 // associations dump
-<<<<<<< Updated upstream
-// User.hasMany(Lesson, { foreignKey: 'creator' });
-Persona.hasMany(User);
-User.belongsTo(Persona, {foreignKey: 'personaType'});
-// Persona.belongsTo(Permission);
-// Permission.hasMany(Persona);
-// Course.hasMany(Lesson);
-// Lesson.belongsToMany(Candidate, { through: CandidateLessons });
-// Lesson.belongsToMany(Tag, { through: LessonTag });
-// Lesson.belongsTo(User);
-// Lesson.belongsTo(Course);
-=======
 Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
 User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
 Persona.belongsTo(Permission);
@@ -64,29 +52,20 @@ Lesson.belongsTo(Course);
 Lesson.belongsToMany(Candidate, { through: CandidateLessons });
 Candidate.belongsToMany(Lesson, { through: CandidateLessons });
 // Lesson.belongsToMany(Tag, { through: LessonTag });
->>>>>>> Stashed changes
 // Lesson.belongsTo(Path);
 // Tag.belongsToMany(Lesson, { through: LessonTag });
 // Path.hasMany(Lesson);
 // Candidate.belongsTo(User);
 // Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
 // Candidate.belongsTo(Question);
-<<<<<<< Updated upstream
-// Candidate.belongsToMany(CandidateLessons, { through: CandidateLessons });
-=======
->>>>>>> Stashed changes
 // Question.hasMany(Candidate);
 // Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
 // Recruiter.belongsTo(User);
 
-<<<<<<< Updated upstream
-sequelize.sync({force: true}).then(() => {
-=======
 /* sequelize.sync({force: true}).then(() => {
   console.log(`Database & Tables created`);
 }); */
 sequelize.sync().then(() => {
->>>>>>> Stashed changes
   console.log(`Database & Tables created`);
 });
 
