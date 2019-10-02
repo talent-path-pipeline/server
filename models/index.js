@@ -54,12 +54,12 @@ Lesson.belongsToMany(Tag, { through: LessonTag });
 Tag.belongsToMany(Lesson, { through: LessonTag });
 Lesson.belongsTo(Path);
 Path.hasMany(Lesson);
+Candidate.belongsTo(Question);
+Question.hasMany(Candidate);
+Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
+Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
 
 // Candidate.belongsTo(User);
-// Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
-// Candidate.belongsTo(Question);
-// Question.hasMany(Candidate);
-// Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
 // Recruiter.belongsTo(User);
 
 /* sequelize.sync({force: true}).then(() => {
