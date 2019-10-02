@@ -48,12 +48,12 @@ User.hasMany(Lesson, {foreignKey: 'creator', sourceKey: 'uuid'});
 Lesson.belongsTo(User, {foreignKey: 'creator', targetKey: 'uuid'});
 Course.hasMany(Lesson);
 Lesson.belongsTo(Course);
-
 Lesson.belongsToMany(Candidate, { through: CandidateLessons });
 Candidate.belongsToMany(Lesson, { through: CandidateLessons });
-// Lesson.belongsToMany(Tag, { through: LessonTag });
+Lesson.belongsToMany(Tag, { through: LessonTag });
+Tag.belongsToMany(Lesson, { through: LessonTag });
+
 // Lesson.belongsTo(Path);
-// Tag.belongsToMany(Lesson, { through: LessonTag });
 // Path.hasMany(Lesson);
 // Candidate.belongsTo(User);
 // Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
