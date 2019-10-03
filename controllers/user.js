@@ -16,7 +16,13 @@ exports.register = async (request, response, next) => {
     // Appending persona for candidate user (default)
     body.persona = 'candidate';
     await registerUser(body);
-    response.status(200).send('Registration Successful.');
+    // new stuff
+    const token = await loginUser(body);
+    // response.status(200).send('Registration Successful.');
+    response
+      .status(200)
+      .set('token', `Bearer ${token}`)
+      .send({message: 'Registration  & Login Successful.', token});
   } catch (err) {
     next(err);
   }
@@ -34,7 +40,7 @@ exports.login = async (request, response, next) => {
     response
       .status(200)
       .set('token', `Bearer ${token}`)
-      .send('Login Successful.');
+      .send({message: 'Registration  & Login Successful.', token});
   } catch (err) {
     next(err);
   }
