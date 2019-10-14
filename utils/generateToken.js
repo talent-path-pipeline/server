@@ -5,10 +5,11 @@ const jwt = require('jsonwebtoken');
  * @param {int} id
  * @param {string} persona
  */
-async function createToken(id, persona) {
+async function createToken(id, persona, fullName) {
   const payload = {
     id,
-    persona
+    persona,
+    fullName
   };
   const additionalInformation = {
     issuer: 'accounts.tppipeline.com',
