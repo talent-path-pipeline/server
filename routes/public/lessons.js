@@ -1,48 +1,40 @@
 /**
  *  lessons.js
  * @description: Contains all routes related to lesson functions.
- * @author: Kevin B.
  */
 const router = require('express').Router();
+const lessonController = require('../../controllers/lessonController');
 
 /**
  *  [GET] /
- *  @description: Testing purposes
+ *  @description: Get lessons (with optional query filter)
  */
-router.get('/', (req, res) => {
-  res.send('Getting list of lessons');
-});
+router.get('/', lessonController.getLessons);
 
 /**
  *  [GET] /:id
- *  @description: Testing purposes
+ *  @description: Get lesson by id
  */
-router.get('/:id', (req, res) => {
-  res.send('Getting a single lesson');
-});
+router.get('/:id', lessonController.getLessonById);
 
 /**
  *  [POST] /
- *  @description: Testing purposes
+ *  @description: Add new lesson
+ *  Fields: videoURL, title, description, courseName,
+ *  pathName, instructorID
  */
-router.post('/', (req, res) => {
-  res.send('Creating a lesson');
-});
+router.post('/', lessonController.addLesson);
 
 /**
  *  [DELETE] /:id
- *  @description: Testing purposes
+ *  @description: Delete lesson
  */
-router.delete('/:id', (req, res) => {
-  res.send('Deleting a lesson');
-});
+router.delete('/:id', lessonController.deleteLesson);
 
 /**
  *  [PATCH] /:id
- *  @description: Testing purposes
+ *  @description: Update lesson
  */
-router.patch('/:id', (req, res) => {
-  res.send('Updating a lesson');
-});
+router.patch('/:id', lessonController.updateLesson);
 
 module.exports = router;

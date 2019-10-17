@@ -3,7 +3,7 @@
  * @description: Contains all routes related to user functions.
  */
 const router = require('express').Router();
-const user = require('../../controller/user');
+const user = require('../../controllers/user');
 
 /**
  *  [GET] /

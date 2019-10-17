@@ -28,15 +28,16 @@ async function registerUser({ email, fullName, password, location, persona }) {
  * @description Handles the logic for logging in users.
  * @param {string} email
  * @param {string} password
+ * @param {string} fullName
  * @returns {string} JWT Token
  */
-async function loginUser({ email, password }) {
+async function loginUser({ email, password}) {
   try {
     if (!(await userExists(email))) {
       throw new ErrorWithHTTPStatus('User does not exists.', 400);
     }
-    const { uuid, persona } = await checkPassword(email, password);
-    const token = await createToken(uuid, persona);
+    const { uuid, persona, fullName } = await checkPassword(email, password);
+    const token = await createToken(uuid, persona, fullName);
     await storeToken(uuid, token);
     return token;
   } catch (err) {

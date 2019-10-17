@@ -37,6 +37,7 @@ const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLesson = CandidateLessonsModel(sequelize, Sequelize);
 
+
 // associations dump
 Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
 User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
