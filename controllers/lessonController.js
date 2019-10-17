@@ -1,4 +1,4 @@
-const { Lesson } = require('../models/index');
+const { Lesson } = require('../models');
 const ErrorWithHttpStatus = require('../utils/error.httpStatus.utils');
 
 exports.addLesson = (req, res) => {

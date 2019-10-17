@@ -1,5 +1,7 @@
+/* eslint-disable implicit-arrow-linebreak */
 const { Sequelize } = require('sequelize');
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (sequelize, type) =>
   sequelize.define(
     'lesson',
@@ -10,10 +12,6 @@ module.exports = (sequelize, type) =>
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
-      videoURL: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       title: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -22,20 +20,33 @@ module.exports = (sequelize, type) =>
         type: Sequelize.STRING,
         allowNull: false,
       },
-      courseName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      pathName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      instructorID: {
+      order: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+      },
+      start: Sequelize.INTEGER,
+      end: Sequelize.INTEGER,
+      length: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      video_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      video_title: Sequelize.STRING,
+      video_description: Sequelize.STRING,
+      channel_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      channel_name: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
     },
     {
       // options
-    }
+    },
   );
