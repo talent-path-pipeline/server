@@ -6,6 +6,28 @@ const {
 } = require('../validations/userValidations');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
+// GET User
+// Route: /api/user
+exports.getAll = async (request, response, next) => {
+  try {
+    console.log('Getting All Users!!');
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+// GET User By ID
+// Route: /api/user/:id
+exports.getByID = async (request, response, next) => {
+  try {
+    console.log('Getting User By ID!!');
+  } catch (err) {
+    next(err);
+  }
+};
+
+
 // POST Signup 
 // Route: /api/user
 exports.register = async (request, response, next) => {
@@ -45,6 +67,26 @@ exports.login = async (request, response, next) => {
       .status(200)
       .set('token', `Bearer ${token}`)
       .send({message: 'Registration  & Login Successful.', token});
+  } catch (err) {
+    next(err);
+  }
+};
+
+// DELETE User
+// Route: /api/user/:id
+exports.delete = async (request, response, next) => {
+  try {
+    console.log('DELETE User!!');
+  } catch (err) {
+    next(err);
+  }
+};
+
+// PATCH User
+// Route: /api/user/:id
+exports.update = async (request, response, next) => {
+  try {
+    console.log('Update User!!');
   } catch (err) {
     next(err);
   }
