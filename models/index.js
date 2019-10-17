@@ -2,7 +2,6 @@
  *  index.js
  *  Converts all the models into database tables using Sequalize.
  */
-
 const { sequelize, Sequelize } = require('../config/config');
 
 // authentication
@@ -37,6 +36,8 @@ const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
 
+// Path.hasMany(Course);
+// Course.hasMany(Lesson);
 /*
  // Commented out for staging. This section is currently broken
 // associations dump
