@@ -6,19 +6,19 @@ const { sequelize, Sequelize } = require('../config/config');
 
 // authentication
 const UserModel = require('./authentication/User');
-const PermissionModel = require('./authentication/Permissions');
+const PermissionModel = require('./authentication/Permission');
 const PersonaModel = require('./authentication/Persona');
 // learning-resources
-const CourseModel = require('./learning-resources/Courses');
-const LessonsModel = require('./learning-resources/Lessons');
+const CourseModel = require('./learning-resources/Course');
+const LessonsModel = require('./learning-resources/Lesson');
 const TagModel = require('./learning-resources/Tag');
-const LessonTagModel = require('./learning-resources/LessonTags');
+const LessonTagModel = require('./learning-resources/LessonTag');
 const PathModel = require('./learning-resources/Path');
 // user-resource
 const CandidateModel = require('./user-resources/Candidate');
 const RecruiterModel = require('./user-resources/Recruiter');
 const QuestionModel = require('./user-resources/Question');
-const CandidateLessonsModel = require('./user-resources/CandidateLessons');
+const CandidateLessonsModel = require('./user-resources/CandidateLesson');
 
 // authentication
 const User = UserModel(sequelize, Sequelize);
@@ -34,38 +34,39 @@ const Path = PathModel(sequelize, Sequelize);
 const Candidate = CandidateModel(sequelize, Sequelize);
 const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
-const CandidateLessons = CandidateLessonsModel(sequelize, Sequelize);
+const CandidateLesson = CandidateLessonsModel(sequelize, Sequelize);
 
 // Path.hasMany(Course);
 // Course.hasMany(Lesson);
-/*
- // Commented out for staging. This section is currently broken
 // associations dump
-User.hasMany(Lesson, { foreignKey: 'creator' });
-User.belongsTo(Persona);
-Persona.hasMany(User);
+Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
+User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
 Persona.belongsTo(Permission);
 Permission.hasMany(Persona);
-Course.hasMany(Lesson);
-Lesson.belongsToMany(Candidate, { through: CandidateLessons });
-Lesson.belongsToMany(Tag, { through: LessonTag });
-Lesson.belongsTo(User);
-Lesson.belongsTo(Course);
-Tag.belongsToMany(Lesson, { through: LessonTag });
-Path.hasMany(Course);
-Candidate.belongsTo(User);
-Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
 Candidate.belongsTo(Question);
-Candidate.belongsToMany(CandidateLessons, { through: CandidateLessons });
 Question.hasMany(Candidate);
+Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });
 Recruiter.hasMany(Candidate, { foreignKey: 'contactedBy' });
+Lesson.belongsTo(Path);
+Path.hasMany(Lesson);
+Lesson.belongsToMany(Tag, { through: LessonTag });
+Tag.belongsToMany(Lesson, { through: LessonTag });
+Candidate.belongsTo(User);
 Recruiter.belongsTo(User);
-*/
+User.hasMany(Lesson, { foreignKey: 'creator', sourceKey: 'uuid' });
+Lesson.belongsTo(User, { foreignKey: 'creator', targetKey: 'uuid' });
+Course.hasMany(Lesson);
+Lesson.belongsTo(Course);
+Lesson.belongsToMany(Candidate, { through: CandidateLesson });
+Candidate.belongsToMany(Lesson, { through: CandidateLesson });
 
-sequelize.sync().then(() => {
+sequelize.sync({ force: true }).then(() => {
   // eslint-disable-next-line no-console
   console.log(`Database & Tables created`);
 });
+/* sequelize.sync().then(() => {
+  console.log(`Database & Tables created`);
+}); */
 
 module.exports = {
   User,
@@ -74,7 +75,7 @@ module.exports = {
   Candidate,
   Recruiter,
   Question,
-  CandidateLessons,
+  CandidateLesson,
   Persona,
   Permission,
   Tag,
