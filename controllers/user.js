@@ -6,6 +6,8 @@ const {
 } = require('../validations/userValidations');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
+// POST Signup 
+// Route: /api/user
 exports.register = async (request, response, next) => {
   try {
     const { body } = request;
@@ -28,6 +30,8 @@ exports.register = async (request, response, next) => {
   }
 };
 
+// POST Login
+// Route: /api/user/login
 exports.login = async (request, response, next) => {
   try {
     const { body } = request;
