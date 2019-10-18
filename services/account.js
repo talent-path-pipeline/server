@@ -1,8 +1,21 @@
 const hashPassword = require('../utils/hashPasswords');
 const checkPassword = require('../utils/checkPassword');
-const { userExists, createUser, storeToken } = require('../db/user');
+const { userExists, createUser, getAllUsers, storeToken } = require('../db/user');
 const createToken = require('../utils/generateToken');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
+
+/**
+ * Get All Users
+ * @description: Handles all actions for getting all users
+ */
+async function getAllUsers() {
+  try {
+    return await getAllUsers();
+  } catch (err) {
+    throw err;
+  }
+}
+
 /**
  * account.js
  * @description: Handles all actions for account information.
@@ -23,6 +36,7 @@ async function registerUser({ email, fullName, password, location, persona }) {
     throw err;
   }
 }
+
 /**
  * loginUser
  * @description Handles the logic for logging in users.
@@ -44,4 +58,4 @@ async function loginUser({ email, password}) {
     throw err;
   }
 }
-module.exports = { registerUser, loginUser };
+module.exports = { getAllUsers, registerUser, loginUser };
