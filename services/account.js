@@ -8,7 +8,7 @@ const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
  * Get All Users
  * @description: Handles all actions for getting all users
  */
-async function getAllUsers() {
+async function readAllUsers() {
   try {
     return await getAllUsers();
   } catch (err) {
@@ -58,4 +58,4 @@ async function loginUser({ email, password}) {
     throw err;
   }
 }
-module.exports = { getAllUsers, registerUser, loginUser };
+module.exports = { readAllUsers, registerUser, loginUser };

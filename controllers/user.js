@@ -1,5 +1,5 @@
 const validate = require('validate.js');
-const { registerUser, loginUser } = require('../services/account');
+const { readAllUsers, registerUser, loginUser } = require('../services/account');
 const {
   registrationConstraints,
   loginConstraints,
@@ -10,7 +10,8 @@ const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 // Route: /api/user
 exports.getAll = async (request, response, next) => {
   try {
-    response.send({message: 'Getting All Users!!'});
+    const users = await readAllUsers();
+    response.send(users);
   } catch (err) {
     next(err);
   }
