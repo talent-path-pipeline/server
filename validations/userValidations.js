@@ -32,4 +32,13 @@ const loginConstraints = {
     length: { minimum: 8 }
   }
 };
-module.exports = { registrationConstraints, loginConstraints };
+
+const emailConstraints = {
+  email: {
+    email: true,
+    presence: true,
+    length: { minimum: 3 }
+  }
+};
+ 
+module.exports = { registrationConstraints, loginConstraints, emailConstraints };
