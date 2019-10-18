@@ -30,7 +30,7 @@ exports.getUsers = async (request, response, next) => {
   }
 };
 
-// POST Signup 
+// POST Signup / Create User
 // Route: /api/user
 exports.register = async (request, response, next) => {
   try {

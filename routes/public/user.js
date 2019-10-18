@@ -7,7 +7,7 @@ const user = require('../../controllers/user');
 
 /**
  *  [GET] /
- *  @description: Gets all users
+ *  @description: Reads all users or one user if inputed with email
  */
 router.get('/',  user.getUsers);
 
