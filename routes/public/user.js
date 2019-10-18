@@ -7,19 +7,15 @@ const user = require('../../controllers/user');
 
 /**
  *  [GET] /
- *  @description: Testing purposes
+ *  @description: Gets all users
  */
-router.get('/', (req, res) => {
-  res.send('You are getting ALL users!');
-});
+router.get('/',  user.getAll);
 
 /**
  *  [GET] /:id
- *  @description: Testing purposes
+ *  @description: Gets a user by ID
  */
-router.get('/:id', (req, res) => {
-  res.send('You are getting a user by ID!');
-});
+router.get('/:id',  user.getByID);
 
 /**
  *  [POST] /
@@ -35,18 +31,14 @@ router.post('/login', user.login);
 
 /**
  *  [DELETE] /:id
- *  @description: Testing purposes
+ *  @description: Deletes a user by ID
  */
-router.delete('/:id', (req, res) => {
-  res.send('Deleting a user');
-});
+router.delete('/:id',  user.delete);
 
 /**
  *  [PATCH] /:id
- *  @description: Testing purposes
+ *  @description: Updates a user by ID
  */
-router.patch('/:id', (req, res) => {
-  res.send('Updating a user');
-});
+router.patch('/:id',  user.update);
 
 module.exports = router;
