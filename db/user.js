@@ -20,6 +20,7 @@ async function userExists(email) {
     throw err;
   }
 }
+
 /**
  * createUser
  * @description Stores user data in the database
@@ -44,6 +45,7 @@ async function createUser(email, password, salt, fullName, location, persona) {
     throw err;
   }
 }
+
 /**
  * getPassword
  * @description Gets user data.
@@ -61,6 +63,21 @@ async function getUser(email) {
     throw err;
   }
 }
+
+/**
+ * getAllUsers
+ * @description Gets all user data.
+ * @param {string} email
+ * @returns {object} An object containing hash and salt
+ */
+async function getAllUsers() {
+  try {
+    return await User.findAll();
+  } catch (err) {
+    throw err;
+  }
+}
+
 /**
  * Finds and returns user token of already logged in user
  * @param {string} id The stored id in the JWT that corresponds with a user.
@@ -77,6 +94,7 @@ async function getUserToken(id) {
     throw err;
   }
 }
+
 /**
  * storeToken
  * @description Stores token in the user's database
@@ -90,4 +108,6 @@ async function storeToken(uuid, token) {
     throw err;
   }
 }
-module.exports = { userExists, createUser, getUser, storeToken, getUserToken };
+
+
+module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken };
