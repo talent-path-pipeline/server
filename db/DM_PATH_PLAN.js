@@ -206,4 +206,4 @@ const DM_PATH = {
   courses: [adventure_begins, countdown_session0, worldbuilding, lets_play],
 };
 
-export default DM_PATH;
+module.exports = DM_PATH;
