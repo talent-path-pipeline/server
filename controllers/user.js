@@ -1,33 +1,34 @@
 const validate = require('validate.js');
-const { readAllUsers, registerUser, loginUser } = require('../services/account');
+const { readAllUsers, readUser, registerUser, loginUser } = require('../services/account');
 const {
   registrationConstraints,
   loginConstraints,
+  emailConstraints,
 } = require('../validations/userValidations');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
 // GET User
 // Route: /api/user
-exports.getAll = async (request, response, next) => {
+exports.getUsers = async (request, response, next) => {
   try {
-    const users = await readAllUsers();
+    const { body } = request;
+    // If there is no body then return all users
+    if(Object.keys(body).length == 0){
+      const users = await readAllUsers();
+      response.send(users);
+    }
+    // Validate email
+    const result = validate(body, emailConstraints);
+    if (result !== undefined) {
+      throw new ErrorWithHTTPStatus('Invalid data received.', 400);
+    }
+
+    const users = await readUser(body.email);
     response.send(users);
   } catch (err) {
     next(err);
   }
 };
-
-
-// GET User By ID
-// Route: /api/user/:id
-exports.getByID = async (request, response, next) => {
-  try {
-    response.send({message: 'Getting User By ID!!'});
-  } catch (err) {
-    next(err);
-  }
-};
-
 
 // POST Signup 
 // Route: /api/user

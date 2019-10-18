@@ -9,13 +9,7 @@ const user = require('../../controllers/user');
  *  [GET] /
  *  @description: Gets all users
  */
-router.get('/',  user.getAll);
-
-/**
- *  [GET] /:id
- *  @description: Gets a user by ID
- */
-router.get('/:id',  user.getByID);
+router.get('/',  user.getUsers);
 
 /**
  *  [POST] /

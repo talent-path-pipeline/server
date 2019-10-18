@@ -1,6 +1,6 @@
 const hashPassword = require('../utils/hashPasswords');
 const checkPassword = require('../utils/checkPassword');
-const { userExists, createUser, getAllUsers, storeToken } = require('../db/user');
+const { userExists, createUser, getUser, getAllUsers, storeToken } = require('../db/user');
 const createToken = require('../utils/generateToken');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
@@ -11,6 +11,18 @@ const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 async function readAllUsers() {
   try {
     return await getAllUsers();
+  } catch (err) {
+    throw err;
+  }
+}
+
+/**
+ * Get User By
+ * @description: Handles all actions for getting all users
+ */
+async function readUser(email) {
+  try {
+    return await getUser(email);
   } catch (err) {
     throw err;
   }
@@ -58,4 +70,4 @@ async function loginUser({ email, password}) {
     throw err;
   }
 }
-module.exports = { readAllUsers, registerUser, loginUser };
+module.exports = { readAllUsers, readUser, registerUser, loginUser };
