@@ -4,6 +4,18 @@ const axios = require('axios');
 const { sequelize } = require('../config/config');
 const { Path, Course, Lesson } = require('../models');
 const DM_PATH = require('./DM_PATH_PLAN');
+const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/';
+
+/**
+ * Takes in a string in the YouTube duration format and parses it into a single
+ * integer representing the total number of seconds for the duration
+ * @param {string} duration the YouTube string format for duration to be parsed
+ */
+function parseDuration(duration) {
+  const time = 0;
+  // TODO: parser
+  return time;
+}
 
 /**
  * An object containing the manually created parts of lesson data
@@ -22,13 +34,27 @@ const DM_PATH = require('./DM_PATH_PLAN');
  * @param {string} course_id the uuid of the course this lesson belongs to
  * @returns an object with the data of the newly created/seeded lesson
  */
-async function seedLesson(lesson_data, course_id) {
-  const new_lesson = {};
-  // TODO: data from lesson_data
-  // TODO: data from youtube api
-  // api call: https://www.googleapis.com/youtube/v3/videos?part=[PART TYPE(s), comma separated]&id=[VIDEO ID]&key=[API KEY]
-  // part type = snippet gets: publishedAt, channelId, title, description, thumbnails, channelTitle, tags, categoryId
-  // part type = contentDetails gets: duration, dimension, definition, caption, licensedContent, projection
+async function seedLesson(
+  { title, description, order, start, end, video_id },
+  course_id,
+) {
+  const youtube_data = await axios.get(
+    `${YOUTUBE_API_URL}videos?part=snippet,contentDetails&id=${video_id}&key=${process.env.GOOGLE_API_KEY}`,
+  );
+  const { snippet, contentDetails } = youtube_data.items[0];
+  const { dataValues: new_lesson } = await Course.create({
+    title: title || 'Course Title',
+    description,
+    order,
+    start,
+    end,
+    length: start && end ? end - start : parseDuration(contentDetails.duration),
+    video_title: snippet.title,
+    video_description: snippet.description,
+    channel_id: snippet.channelId,
+    channel_name: snippet.channelTitle,
+    courseUuid: course_id,
+  });
   console.log(`Seeded lesson '${new_lesson.title}'`);
   return new_lesson;
 }
