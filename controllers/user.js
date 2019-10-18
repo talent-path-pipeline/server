@@ -10,7 +10,7 @@ const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 // Route: /api/user
 exports.getAll = async (request, response, next) => {
   try {
-    console.log('Getting All Users!!');
+    response.send({message: 'Getting All Users!!'});
   } catch (err) {
     next(err);
   }
@@ -21,7 +21,7 @@ exports.getAll = async (request, response, next) => {
 // Route: /api/user/:id
 exports.getByID = async (request, response, next) => {
   try {
-    console.log('Getting User By ID!!');
+    response.send({message: 'Getting User By ID!!'});
   } catch (err) {
     next(err);
   }
@@ -76,7 +76,7 @@ exports.login = async (request, response, next) => {
 // Route: /api/user/:id
 exports.delete = async (request, response, next) => {
   try {
-    console.log('DELETE User!!');
+    response.send({message: 'DELETE User!!'});
   } catch (err) {
     next(err);
   }
@@ -86,7 +86,7 @@ exports.delete = async (request, response, next) => {
 // Route: /api/user/:id
 exports.update = async (request, response, next) => {
   try {
-    console.log('Update User!!');
+    response.send({message: 'Update User!!'});
   } catch (err) {
     next(err);
   }
