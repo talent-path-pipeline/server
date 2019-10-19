@@ -12,18 +12,23 @@ module.exports = (sequelize, type) =>
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
+      slug: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
       title: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       order: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
       },
       start: Sequelize.INTEGER,
       end: Sequelize.INTEGER,
@@ -36,7 +41,7 @@ module.exports = (sequelize, type) =>
         allowNull: false,
       },
       video_title: Sequelize.STRING,
-      video_description: Sequelize.STRING,
+      video_description: Sequelize.TEXT,
       channel_id: {
         type: Sequelize.STRING,
         allowNull: false,

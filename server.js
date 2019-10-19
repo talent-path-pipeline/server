@@ -28,8 +28,8 @@ function startServer() {
   });
 }
 
-if (process.env.SEEDING) {
-  seed(DM_PATH).then(startServer);
+if (process.env.SEEDING === 'true') {
+  seed([DM_PATH]).then(startServer);
 } else {
   sequelize.sync({ force: false }).then(() => {
     console.log(`Database tables created/synced`);

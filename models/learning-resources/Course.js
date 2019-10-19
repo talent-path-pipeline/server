@@ -22,7 +22,7 @@ module.exports = (sequelize, type) =>
         allowNull: false,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       image_name: {
@@ -32,7 +32,6 @@ module.exports = (sequelize, type) =>
       order: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
       },
     },
     {

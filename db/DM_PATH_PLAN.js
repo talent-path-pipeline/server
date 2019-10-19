@@ -3,6 +3,7 @@
 // part type = contentDetails gets: duration, dimension, definition, caption, licensedContent, projection
 
 const example_session = {
+  slug: 'example',
   order: 0,
   video_id: 'MFCzwiqlnCE',
   title: 'An Example Session',
@@ -10,6 +11,7 @@ const example_session = {
 };
 
 const sourcing_books = {
+  slug: 'books',
   order: 1,
   video_id: 'wizuCHNGvwc',
   start: 0,
@@ -20,6 +22,7 @@ const sourcing_books = {
 };
 
 const sourcing_equipment = {
+  slug: 'equipment',
   order: 2,
   video_id: 'wizuCHNGvwc',
   start: 878,
@@ -30,6 +33,7 @@ const sourcing_equipment = {
 };
 
 const choices = {
+  slug: 'choices',
   order: 3,
   video_id: 'TEeuWEM63Uc',
   title: 'Choices, Choices...',
@@ -37,6 +41,7 @@ const choices = {
 };
 
 const finding_a_party = {
+  slug: 'party',
   order: 4,
   video_id: 'xQHAPEoqdVw',
   title: 'Finding Your Party',
@@ -65,6 +70,7 @@ const adventure_begins = {
 // =============================================================
 
 const make_rules = {
+  slug: 'houserules',
   order: 0,
   video_id: 'g5lrIDoEPOw',
   title: 'You Make the Rules!',
@@ -72,6 +78,7 @@ const make_rules = {
 };
 
 const expectations = {
+  slug: 'expectations',
   order: 1,
   video_id: 'aBOH8YLUPjE',
   title: 'Setting Expectations',
@@ -79,13 +86,15 @@ const expectations = {
 };
 
 const etiquette = {
+  slug: 'etiquette',
   order: 2,
   video_id: '_9X2Tz7QegM',
-  title: 'You Make the Rules!',
+  title: 'Dungeon Etiquette',
   description: `D&D is all about having fun, and the best way to make sure that happens is to treat everyone around the table with respect. In this lesson, learn best practices to maintain harmony with your party members--both in and outside the game!`,
 };
 
 const char_creation = {
+  slug: 'characters',
   order: 3,
   video_id: 'd0vZFBFs4WQ',
   title: 'Character Creation',
@@ -107,6 +116,7 @@ const countdown_session0 = {
 // =============================================================
 
 const flavortown = {
+  slug: 'flavortown',
   order: 0,
   video_id: 'NjmkolUrrB4',
   title: 'Flavortown',
@@ -114,6 +124,7 @@ const flavortown = {
 };
 
 const actor_in_you = {
+  slug: 'roleplay',
   order: 1,
   video_id: 'MXh7-UFxXc8',
   title: 'The Actor In You',
@@ -121,6 +132,7 @@ const actor_in_you = {
 };
 
 const creatures = {
+  slug: 'creatures',
   order: 2,
   video_id: 'X78D3pmHVp0',
   title: 'Lions and Tigers and Owlbears, Oh My!',
@@ -128,6 +140,7 @@ const creatures = {
 };
 
 const treasure = {
+  slug: 'treasure',
   order: 3,
   video_id: 'NmPZ7oLmS5s',
   title: 'Stuff Yourself',
@@ -135,6 +148,7 @@ const treasure = {
 };
 
 const random_tables = {
+  slug: 'randomness',
   order: 4,
   video_id: '3hdGi_Bwjd8',
   title: 'Well, That Was Random.',
@@ -157,6 +171,7 @@ const worldbuilding = {
 // =============================================================
 
 const rules_rolls = {
+  slug: 'rulesrolls',
   order: 0,
   video_id: 'rKU2e5Xrx1k',
   title: 'Rules and Rolls',
@@ -164,6 +179,7 @@ const rules_rolls = {
 };
 
 const combat = {
+  slug: 'combat',
   order: 1,
   video_id: 'cOGFmSXIvc8',
   title: 'Roll for Initiative!',
@@ -171,6 +187,7 @@ const combat = {
 };
 
 const magic = {
+  slug: 'magic',
   order: 2,
   video_id: 'YkwhS-RPEhw',
   title: 'Witchcraft and Wizardry',
@@ -178,6 +195,7 @@ const magic = {
 };
 
 const unexpected = {
+  slug: 'unexpected',
   order: 3,
   video_id: 'K0SjRJNENME',
   title: 'Expect the Unexpected',
