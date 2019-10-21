@@ -17,15 +17,16 @@ exports.getUsers = async (request, response, next) => {
     if(Object.keys(body).length == 0){
       const users = await readAllUsers();
       response.send(users);
+    } else {
+      // Validate email
+      const result = validate(body, emailConstraints);
+      if (result !== undefined) { 
+        throw new ErrorWithHTTPStatus('Invalid data received.', 400);
+      }
+  
+      const users = await readUser(body.email);
+      response.send(users);
     }
-    // Validate email
-    const result = validate(body, emailConstraints);
-    if (result !== undefined) {
-      throw new ErrorWithHTTPStatus('Invalid data received.', 400);
-    }
-
-    const users = await readUser(body.email);
-    response.send(users);
   } catch (err) {
     next(err);
   }
@@ -41,7 +42,7 @@ exports.register = async (request, response, next) => {
       throw new ErrorWithHTTPStatus('Invalid data received.', 400);
     }
     // Appending persona for candidate user (default)
-    body.persona = 'candidate';
+    body.persona = 'candidate'; 
     await registerUser(body);
     // new stuff
     const token = await loginUser(body);
@@ -53,14 +54,14 @@ exports.register = async (request, response, next) => {
   } catch (err) {
     next(err);
   }
-};
-
+}; 
+ 
 // POST Login
 // Route: /api/user/login
 exports.login = async (request, response, next) => {
   try {
     const { body } = request;
-    const result = validate(body, loginConstraints);
+    const result = validate(body, loginConstraints); 
     if (result !== undefined) {
       throw new ErrorWithHTTPStatus('Invalid data received.', 400);
     }

@@ -47,12 +47,31 @@ async function createUser(email, password, salt, fullName, location, persona) {
 }
 
 /**
- * Gets a user with an email
+ * Gets a user with an email INCLUDING salt and password
+ * @description Gets all of a user's data.
+ * @param {string} email
+ * @returns {object} An object containing hash and salt
+ */
+async function getUserPrivate(email) {
+  try {
+    return await User.findOne({
+      where: {
+        email,
+      },
+      attributes: ['uuid', 'email', 'salt', 'password', 'fullName', 'location', 'persona', 'createdAt', 'updatedAt']
+    });
+  } catch (err) {
+    throw err;
+  }
+}
+
+/**
+ * Gets a user with an email INCLUDING salt
  * @description Gets user data.
  * @param {string} email
  * @returns {object} An object containing hash and salt
  */
-async function getUser(email) {
+async function getUserPublic(email) {
   try {
     return await User.findOne({
       where: {
@@ -147,4 +166,4 @@ async function destroyUser(email) {
 }
 
 
-module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUserData, destroyUser };
+module.exports = { userExists, createUser, getUserPrivate, getUserPublic, getAllUsers, storeToken, getUserToken, updateUserData, destroyUser };
