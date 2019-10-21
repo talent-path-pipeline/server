@@ -118,12 +118,10 @@ async function storeToken(uuid, token) {
  * @param {string} email
  * @param {string} token
  */
-async function patchUser(email, password, salt, fullName, location, persona, uuid) {
+async function updateUserData(email, fullName, location, persona, uuid) {
   try {
     await User.update({ 
       email,
-      password,
-      salt,
       fullName,
       location,
       persona,
@@ -134,4 +132,4 @@ async function patchUser(email, password, salt, fullName, location, persona, uui
 }
 
 
-module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, patchUser };
+module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUserData };
