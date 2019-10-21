@@ -58,6 +58,7 @@ async function getUser(email) {
       where: {
         email,
       },
+      attributes: ['uuid', 'email', 'fullName', 'location', 'persona', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
@@ -72,7 +73,9 @@ async function getUser(email) {
  */
 async function getAllUsers() {
   try {
-    return await User.findAll();
+    return await User.findAll({
+      attributes: ['uuid', 'email', 'fullName', 'location', 'persona', 'createdAt', 'updatedAt']
+    });
   } catch (err) {
     throw err;
   }
@@ -131,4 +134,4 @@ async function patchUser(email, password, salt, fullName, location, persona, uui
 }
 
 
-module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUser };
+module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, patchUser };
