@@ -4,6 +4,7 @@ const {
   registrationConstraints,
   loginConstraints,
   emailConstraints,
+  updateDataConstraints
 } = require('../validations/userValidations');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
@@ -103,7 +104,13 @@ exports.update = async (request, response, next) => {
       testData[key]=value;
     }
 
-    const newUser = await updateUser(testData)
+    // Validate updateData
+    const dataResult = validate(testData.dataValues, updateDataConstraints);
+    if (dataResult !== undefined) {
+      throw new ErrorWithHTTPStatus('Invalid data received.', 400);
+    }
+
+    const newUser = await updateUser(testData.dataValues)
     
     response
       .status(200)

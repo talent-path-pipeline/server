@@ -75,8 +75,13 @@ async function loginUser({ email, password}) {
 }
 
 /**
- * Update Users With uuid
- * @description: Updates user with uuid
+ * Update Users With an email
+ * @description: Updates user with an email
+ * @param {string} email
+ * @param {string} password
+ * @param {string} fullName
+ * @param {string} persona
+ * @returns {Object} Updated User
  */
 async function updateUser({ email, fullName, location, persona, uuid }) {
   try {

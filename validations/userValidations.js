@@ -40,5 +40,23 @@ const emailConstraints = {
     length: { minimum: 3 }
   }
 };
+
+const updateDataConstraints = {
+  email: {
+    email: true,
+    presence: true,
+    length: { minimum: 3 }
+  },
+  fullName: {
+    presence: true,
+    length: { minimum: 1 }
+  },
+  location: {
+    length: { minimum: 2 }
+  },
+  persona: {
+    length: { minimum: 3 }
+  },
+};
  
-module.exports = { registrationConstraints, loginConstraints, emailConstraints };
+module.exports = { registrationConstraints, loginConstraints, emailConstraints, updateDataConstraints };
