@@ -47,7 +47,7 @@ async function createUser(email, password, salt, fullName, location, persona) {
 }
 
 /**
- * getPassword
+ * Gets a user with an email
  * @description Gets user data.
  * @param {string} email
  * @returns {object} An object containing hash and salt
@@ -68,7 +68,6 @@ async function getUser(email) {
 /**
  * getAllUsers
  * @description Gets all user data.
- * @param {string} email
  * @returns {object} An object containing hash and salt
  */
 async function getAllUsers() {
@@ -101,7 +100,7 @@ async function getUserToken(id) {
 /**
  * storeToken
  * @description Stores token in the user's database
- * @param {string} email
+ * @param {string} uuid The stored id in the JWT that corresponds with a user.
  * @param {string} token
  */
 async function storeToken(uuid, token) {
@@ -113,10 +112,13 @@ async function storeToken(uuid, token) {
 }
 
 /**
- * storeToken
- * @description Stores token in the user's database
+ * Updates a user
+ * @description Updates a users data (not including password)
  * @param {string} email
- * @param {string} token
+ * @param {string} fullName
+ * @param {string} location
+ * @param {string} persona
+ * @param {string} uuid The stored id in the JWT that corresponds with a user.
  */
 async function updateUserData(email, fullName, location, persona, uuid) {
   try {
@@ -131,5 +133,18 @@ async function updateUserData(email, fullName, location, persona, uuid) {
   }
 }
 
+/**
+ * Delete a user
+ * @description Deletes a user with a uuid
+ * @param {string} id The stored id in the JWT that corresponds with a user.
+ */
+async function deleteUser(id) {
+  try {
+    await User.destroy({ where: { uuid: id } });
+  } catch (err) {
+    throw err;
+  }
+}
 
-module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUserData };
+
+module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUserData, deleteUser };
