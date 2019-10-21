@@ -33,6 +33,6 @@ router.delete('/:id',  user.delete);
  *  [PATCH] /:id
  *  @description: Updates a user by ID
  */
-router.patch('/:id',  user.update);
+router.patch('/',  user.update);
 
 module.exports = router;

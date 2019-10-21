@@ -1,6 +1,6 @@
 const hashPassword = require('../utils/hashPasswords');
 const checkPassword = require('../utils/checkPassword');
-const { userExists, createUser, getUser, getAllUsers, storeToken } = require('../db/user');
+const { userExists, createUser, getUser, getAllUsers, storeToken, updateUserData } = require('../db/user');
 const createToken = require('../utils/generateToken');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
@@ -22,6 +22,9 @@ async function readAllUsers() {
  */
 async function readUser(email) {
   try {
+    if (!(await userExists(email))) {
+      throw new ErrorWithHTTPStatus('User does not exists.', 400);
+    }
     return await getUser(email);
   } catch (err) {
     throw err;
@@ -70,4 +73,18 @@ async function loginUser({ email, password}) {
     throw err;
   }
 }
-module.exports = { readAllUsers, readUser, registerUser, loginUser };
+
+/**
+ * Update Users With uuid
+ * @description: Updates user with uuid
+ */
+async function updateUser({ email, fullName, location, persona, uuid }) {
+  try {
+    await updateUserData(email, fullName, location, persona, uuid);
+    return await getUser(email);
+  } catch (err) {
+    throw err;
+  }
+}
+
+module.exports = { readAllUsers, readUser, registerUser, loginUser, updateUser };

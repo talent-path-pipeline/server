@@ -1,5 +1,5 @@
 const validate = require('validate.js');
-const { readAllUsers, readUser, registerUser, loginUser } = require('../services/account');
+const { readAllUsers, readUser, registerUser, loginUser, updateUser } = require('../services/account');
 const {
   registrationConstraints,
   loginConstraints,
@@ -88,7 +88,26 @@ exports.delete = async (request, response, next) => {
 // Route: /api/user/:id
 exports.update = async (request, response, next) => {
   try {
-    response.send({message: 'Update User!!'});
+    const { body } = request;
+    // Validate email
+    const result = validate(body, emailConstraints);
+    if (result !== undefined) {
+      throw new ErrorWithHTTPStatus('Invalid data received. Please include a valid email.', 400);
+    }
+    // Get old data
+    let testData = await readUser(body.email);
+    if (!body.newData) {
+      throw new ErrorWithHTTPStatus('Invalid data received. Please include a newData object.', 400);
+    }
+    for (let [key, value] of Object.entries(body.newData)) {
+      testData[key]=value;
+    }
+
+    const newUser = await updateUser(testData)
+    
+    response
+      .status(200)
+      .send({message: `Update ${testData.fullName} Successful.`, newUser});
   } catch (err) {
     next(err);
   }
