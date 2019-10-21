@@ -1,6 +1,6 @@
 const hashPassword = require('../utils/hashPasswords');
 const checkPassword = require('../utils/checkPassword');
-const { userExists, createUser, getUser, getAllUsers, storeToken, updateUserData } = require('../db/user');
+const { userExists, createUser, getUser, getAllUsers, storeToken, updateUserData, destroyUser } = require('../db/user');
 const createToken = require('../utils/generateToken');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
@@ -92,4 +92,22 @@ async function updateUser({ email, fullName, location, persona, uuid }) {
   }
 }
 
-module.exports = { readAllUsers, readUser, registerUser, loginUser, updateUser };
+/**
+ * Delete a user by id
+ * @description: Handles all actions for deleting a user
+ * @param {string} email
+ */
+async function deleteUser(email) {
+  try {
+    if (!(await userExists(email))) {
+      throw new ErrorWithHTTPStatus('User does not exists.', 400);
+    }
+    const user = await getUser(email);
+    await destroyUser(email);
+    return user;
+  } catch (err) {
+    throw err;
+  }
+}
+
+module.exports = { readAllUsers, readUser, registerUser, loginUser, updateUser, deleteUser };

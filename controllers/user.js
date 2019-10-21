@@ -1,5 +1,5 @@
 const validate = require('validate.js');
-const { readAllUsers, readUser, registerUser, loginUser, updateUser } = require('../services/account');
+const { readAllUsers, readUser, registerUser, loginUser, updateUser, deleteUser } = require('../services/account');
 const {
   registrationConstraints,
   loginConstraints,
@@ -79,7 +79,17 @@ exports.login = async (request, response, next) => {
 // Route: /api/user/:id
 exports.delete = async (request, response, next) => {
   try {
-    response.send({message: 'DELETE User!!'});
+    const { body } = request;
+    // Validate email
+    const result = validate(body, emailConstraints);
+    if (result !== undefined) {
+      throw new ErrorWithHTTPStatus('Invalid data received. Please include a valid email.', 400);
+    }
+    // Delete the user
+    const deletedUser = await deleteUser(body.email);
+    response
+      .status(200)
+      .send({message: `${deletedUser.fullName} Successful Deleted.`, deletedUser});
   } catch (err) {
     next(err);
   }

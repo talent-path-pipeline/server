@@ -27,7 +27,7 @@ router.post('/login', user.login);
  *  [DELETE] /:id
  *  @description: Deletes a user by ID
  */
-router.delete('/:id',  user.delete);
+router.delete('/',  user.delete);
 
 /**
  *  [PATCH] /:id

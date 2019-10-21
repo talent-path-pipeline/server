@@ -138,13 +138,13 @@ async function updateUserData(email, fullName, location, persona, uuid) {
  * @description Deletes a user with a uuid
  * @param {string} id The stored id in the JWT that corresponds with a user.
  */
-async function deleteUser(id) {
+async function destroyUser(email) { 
   try {
-    await User.destroy({ where: { uuid: id } });
+    await User.destroy({ where: { email } });
   } catch (err) {
     throw err;
   }
 }
 
 
-module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUserData, deleteUser };
+module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUserData, destroyUser };
