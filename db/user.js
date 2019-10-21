@@ -109,5 +109,26 @@ async function storeToken(uuid, token) {
   }
 }
 
+/**
+ * storeToken
+ * @description Stores token in the user's database
+ * @param {string} email
+ * @param {string} token
+ */
+async function patchUser(email, password, salt, fullName, location, persona, uuid) {
+  try {
+    await User.update({ 
+      email,
+      password,
+      salt,
+      fullName,
+      location,
+      persona,
+    }, { where: { uuid } });
+  } catch (err) {
+    throw err;
+  }
+}
 
-module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken };
+
+module.exports = { userExists, createUser, getUser, getAllUsers, storeToken, getUserToken, updateUser };
