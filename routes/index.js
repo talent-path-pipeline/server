@@ -11,7 +11,7 @@ const passport = require('passport');
  * @description: Testing purposes
  */
 router.get('/', (req, res) => {
-  res.send('Talent Path Pipeline Server');
+  res.send('Stonehaven Academy Server');
 });
 /**
  * Test route
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
  * @description: Testing purposes
  */
 router.get('/api/', (req, res) => {
-  res.send('Welcome to the Talent Path Pipeline API');
+  res.send('Welcome to the Stonehaven Academy API');
 });
 
 /**
@@ -36,7 +36,7 @@ router.use('/api/user', require('./public/user'));
 router.use(
   '/api/dashboard',
   passport.authenticate('jwt', { session: false }),
-  require('./private/dashboard')
+  require('./private/dashboard'),
 );
 /**
  * Lesson routes
@@ -49,5 +49,11 @@ router.use('/api/lessons', require('./public/lessons'));
  * @description: Handles all routes for the courses.
  */
 router.use('/api/courses', require('./public/courses'));
+
+/**
+ * Path routes
+ * @description: Handles all routes for the paths.
+ */
+router.use('/api/paths', require('./public/paths'));
 
 module.exports = router;

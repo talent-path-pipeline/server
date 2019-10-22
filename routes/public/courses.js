@@ -12,17 +12,23 @@ const courseController = require('../../controllers/courseController');
 router.get('/', courseController.getCourses);
 
 /**
- *  [GET] /
+ *  [GET] /:id
  *  @description: Get course by id
  */
-router.get('/:id',courseController.getCourseById);
+router.get('/:id', courseController.getCourseById);
+
+/**
+ *  [GET] /path/:id
+ *  @description: Get course by path id
+ */
+router.get('/path/:id', courseController.getCourseByPathId);
 
 /**
  *  [POST] /
  *  @description: Add new course
  *  Field: courseName
  */
-router.post('/', courseController.addCourse);
+router.post('/', courseController.createCourse);
 
 /**
  *  [DELETE] /

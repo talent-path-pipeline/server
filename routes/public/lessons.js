@@ -18,12 +18,18 @@ router.get('/', lessonController.getLessons);
 router.get('/:id', lessonController.getLessonById);
 
 /**
+ *  [GET] /course/:id
+ *  @description: Get lesson by course id
+ */
+router.get('/course/:id', lessonController.getLessonByCourseId);
+
+/**
  *  [POST] /
  *  @description: Add new lesson
  *  Fields: videoURL, title, description, courseName,
  *  pathName, instructorID
  */
-router.post('/', lessonController.addLesson);
+router.post('/', lessonController.createLesson);
 
 /**
  *  [DELETE] /:id
