@@ -105,7 +105,8 @@ server/
        | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Logs a user in                                               |
        | (body)                                                       | Example                                                      |
        |                                                              | ![Login](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/code-snippets/login.png)<br> Parameter content type: **application/json** |
-       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | ![image](./data/images/loginResponse.png) <br>  Returns a Success Message and a Token  <br><br>   Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        |                                                              | **Headers:**<br><br>**X-Token**: User JWT token **(string)** |
