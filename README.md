@@ -90,7 +90,7 @@ server/
        | (body)                                                       | Example                                                      |
        |                                                              | ![image](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/code-snippets/registration.png) <br><br> Parameter content type: **application/json** |
        | **Response**                                                         | Example                                                  | 
-       |                                                              | ![image](./data/images/loginResponse.png) <br>  Returns a Success Message and a Token  <br><br>   Parameter content type: **application/json** |
+       |                                                              | Returns a Success Message and a Token:  <br> ![image](./data/images/loginResponse.png) <br><br>   Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        | 400                                                          | ``Invalid username or password supplied``                    |
@@ -106,7 +106,7 @@ server/
        | (body)                                                       | Example                                                      |
        |                                                              | ![Login](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/code-snippets/login.png)<br> Parameter content type: **application/json** |
        | **Response**                                                         | Example                                                  | 
-       |                                                              | ![image](./data/images/loginResponse.png) <br>  Returns a Success Message and a Token  <br><br>   Parameter content type: **application/json** |
+       |                                                              | Returns a Success Message and a Token:  <br> ![image](./data/images/loginResponse.png) <br><br>   Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        |                                                              | **Headers:**<br><br>**X-Token**: User JWT token **(string)** |
@@ -123,7 +123,8 @@ server/
        | **body** ![optional](./data/images/optional.png) | Email of User you want to get.  <br>If not included, returns all users.       |
        | (body)                                                       | Example                                                      |
        |                                                              | ![image](./data/images/getUser.png) <br><br> Parameter content type: **application/json** |
-       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Returns all Users:  <br> ![image](./data/images/getAllResponse.png) <br><br> Or <br><br>Returns One User:  <br> ![image](./data/images/getOneResponse.png) <br><br>  Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        | 400                                                          | ``An error has occurred: Invalid data received.``                    |
