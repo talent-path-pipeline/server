@@ -18,10 +18,10 @@ router.get('/', dataController.getAllNestedPaths);
 router.get('/:id', dataController.getNestedPathById);
 
 /**
- *  [GET] /course
+ *  [GET] /course/all
  *  @description: Get all nested course data
  */
-router.get('/course', dataController.getAllNestedCourses);
+router.get('/course/all', dataController.getAllNestedCourses);
 
 /**
  *  [GET] /course/:id
