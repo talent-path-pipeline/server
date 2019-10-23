@@ -118,7 +118,7 @@ server/
 
        | Name                                                         | Description                                                  |
        | ------------------------------------------------------------ | ------------------------------------------------------------ |
-       | **body** ![optional](./data/images/optional.png) | Email of User you want to get       |
+       | **body** ![optional](./data/images/optional.png) | Email of User you want to get.  <br>If not included, returns all users.       |
        | (body)                                                       | Example                                                      |
        |                                                              | ![image](./data/images/getUser.png) <br><br> Parameter content type: **application/json** |
        | **Response**                                                 | Parameter content type: **application/json**                 |
@@ -126,4 +126,19 @@ server/
        | 200                                                          | ``successful operation``                                     |
        | 400                                                          | ``An error has occurred: Invalid data received.``                    |
        
+ 3. **Update**
+
+   - ![PATCH](./data/images/PATCH.png) **/api/user** - Get user(s)
+
+     - **Parameters**
+
+       | Name                                                         | Description                                                  |
+       | ------------------------------------------------------------ | ------------------------------------------------------------ |
+       | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Email of User you want to update. {email}<br> Data that you want to update. {newData} <br>-- newData can be an empty object. <br> -- Only include data you want to update  <br> -- You can't update a password with this route      |
+       | (body)                                                       | Example                                                      |
+       |                                                              | ![image](./data/images/updateUser.png) <br> ![image2](./data/images/updateUser2.png) <br><br> Parameter content type: **application/json** |
+       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Code**                                                     | **Description**                                              |
+       | 200                                                          | ``successful operation``                                     |
+       | 400                                                          | ``An error has occurred: Invalid data received.``                    |
            
