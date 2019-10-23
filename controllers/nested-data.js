@@ -101,6 +101,23 @@ exports.getAllNestedPaths = (request, response, next) => {
     .catch(next);
 };
 
+// getting all courses not nested inside paths for use on the Catalog page
+exports.getAllNestedCourses = (request, response, next) => {
+  Course.findAll()
+    .then(data => data.map(course_data => course_data.dataValues))
+    .then(all_courses_data => {
+      const course_promises = all_courses_data.map(
+        // prettier-ignore
+        course_data => getNestedCourse_Helper(course_data.uuid, course_data),
+      );
+      return Promise.all(course_promises);
+    })
+    .then(nested_courses => {
+      response.status(200).send(nested_courses);
+    })
+    .catch(next);
+};
+
 exports.getNestedPathById = (request, response, next) => {
   getNestedPath_Helper(request.params.id)
     .then(path_data => {
