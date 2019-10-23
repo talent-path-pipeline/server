@@ -141,4 +141,20 @@ server/
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        | 400                                                          | ``An error has occurred: Invalid data received.``                    |
-           
+
+ 4. **Delete**
+
+   - ![DELETE](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/http-verbs/DELETE.png) **/api/user** - Deletes a user
+
+     - **Parameters**
+
+       | Name                                                         | Description                                                  |
+       | ------------------------------------------------------------ | ------------------------------------------------------------ |
+       | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Email of User you want to delete.       |
+       | (body)                                                       | Example                                                      |
+       |                                                              | ![image](./data/images/getUser.png) <br><br> Parameter content type: **application/json** |
+       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Code**                                                     | **Description**                                              |
+       | 200                                                          | ``OK``                                     |
+       | 400                                                          | ``An error has occurred: Invalid data received.``                    |
+    
