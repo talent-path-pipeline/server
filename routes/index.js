@@ -56,4 +56,10 @@ router.use('/api/courses', require('./public/courses'));
  */
 router.use('/api/paths', require('./public/paths'));
 
+/**
+ * Nested data routes
+ * @description: Handles all routes for getting fully nested data representation objects
+ */
+router.use('/api/nested-data', require('./public/nested-data'));
+
 module.exports = router;
