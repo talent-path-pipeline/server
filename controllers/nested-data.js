@@ -22,6 +22,7 @@ const getElementById = async (model, uuid) => {
 const getElementsByContainerId = async (model, container_uuid, container_name) => {
   const data = await model.findAll({
     where: { [`${container_name}Uuid`]: container_uuid },
+    order: [['order', 'ASC']],
   });
   return data.map(element_response => element_response.dataValues);
 };
