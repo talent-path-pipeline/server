@@ -41,6 +41,8 @@ const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLesson = CandidateLessonsModel(sequelize, Sequelize);
 
 // associations dump
+// These are commented out because we either aren't using them or they are redundant or just generally need to be checked
+// https://sequelize.org/master/manual/associations.html
 Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
 // User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
 // Persona.belongsTo(Permission);
