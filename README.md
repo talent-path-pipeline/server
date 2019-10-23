@@ -109,4 +109,21 @@ server/
        | 200                                                          | ``successful operation``                                     |
        |                                                              | **Headers:**<br><br>**X-Token**: User JWT token **(string)** |
        | 400                                                          | ``Invalid username or password supplied``                    |
+
+ 2. **Read**
+
+   - ![GET](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/http-verbs/GET.png) **/api/user** - Get user(s)
+
+     - **Parameters**
+
+       | Name                                                         | Description                                                  |
+       | ------------------------------------------------------------ | ------------------------------------------------------------ |
+       | **body** ![optional](./data/images/optional.png) | Email of User you want to get       |
+       | (body)                                                       | Example                                                      |
+       |                                                              | ![image](./data/images/getUser.png) <br><br> Parameter content type: **application/json** |
+       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Code**                                                     | **Description**                                              |
+       | 200                                                          | ``successful operation``                                     |
+       | 400                                                          | ``An error has occurred: Invalid data received.``                    |
        
+           
