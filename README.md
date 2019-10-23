@@ -157,7 +157,8 @@ server/
        | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Email of User you want to delete.       |
        | (body)                                                       | Example                                                      |
        |                                                              | ![image](./data/images/getUser.png) <br><br> Parameter content type: **application/json** |
-       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Deletes a User:  <br> ![image](./data/images/deleteResponse.png) <br><br>  Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``OK``                                     |
        | 400                                                          | ``An error has occurred: Invalid data received.``                    |
