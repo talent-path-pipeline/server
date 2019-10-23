@@ -140,7 +140,8 @@ server/
        | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Email of User you want to update. {email}<br> Data that you want to update. {newData} <br>-- newData can be an empty object. <br> -- Only include data you want to update  <br> -- You can't update a password with this route      |
        | (body)                                                       | Example                                                      |
        |                                                              | ![image](./data/images/updateUser.png) <br> ![image2](./data/images/updateUser2.png) <br><br> Parameter content type: **application/json** |
-       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Updates a User:  <br> ![image](./data/images/updateResponse.png) <br><br>  Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        | 400                                                          | ``An error has occurred: Invalid data received.``                    |
