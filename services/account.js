@@ -40,13 +40,13 @@ async function readUser(email) {
  * @param {string} location
  * @param {string} personaType
  */
-async function registerUser({ email, fullName, password, location, personaType }) {
+async function registerUser({ email, fullName, password, location }) {
   try {
     if (await userExists(email)) {
       throw new ErrorWithHTTPStatus('User already exists.', 400);
     }
     const { hash, salt } = await hashPassword(password);
-    await createUser(email, hash, salt, fullName, location, personaType);
+    await createUser(email, hash, salt, fullName, location);
   } catch (err) {
     throw err;
   }
@@ -65,8 +65,8 @@ async function loginUser({ email, password}) {
     if (!(await userExists(email))) {
       throw new ErrorWithHTTPStatus('User does not exists.', 400);
     }
-    const { uuid, persona, fullName } = await checkPassword(email, password);
-    const token = await createToken(uuid, persona, fullName);
+    const { uuid, fullName } = await checkPassword(email, password);
+    const token = await createToken(uuid, fullName);
     await storeToken(uuid, token);
     return token;
   } catch (err) {
@@ -83,9 +83,9 @@ async function loginUser({ email, password}) {
  * @param {string} personaType
  * @returns {Object} Updated User
  */
-async function updateUser({ email, fullName, location, personaType, uuid }) {
+async function updateUser({ email, fullName, location, uuid }) {
   try {
-    await updateUserData(email, fullName, location, personaType, uuid);
+    await updateUserData(email, fullName, location,uuid);
     return await getUserPublic(email);
   } catch (err) {
     throw err;

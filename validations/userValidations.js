@@ -14,7 +14,7 @@ const registrationConstraints = {
   },
   fullName: {
     presence: true,
-    length: { minimum: 1 }
+    length: { minimum: 1 } 
   },
   location: {
     length: { minimum: 2 }
@@ -54,9 +54,9 @@ const updateDataConstraints = {
   location: {
     length: { minimum: 2 }
   },
-  personaType: {
-    length: { minimum: 3 }
-  },
+  // personaType: {
+  //   length: { minimum: 3 }
+  // },
 };
  
 module.exports = { registrationConstraints, loginConstraints, emailConstraints, updateDataConstraints };

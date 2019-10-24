@@ -42,7 +42,7 @@ exports.register = async (request, response, next) => {
       throw new ErrorWithHTTPStatus('Invalid data received.', 400); 
     }
     // Appending personaType for candidate user (default)
-    body.personaType = 'candidate'; 
+    // body.personaType = 'candidate'; 
     await registerUser(body);
     // new stuff
     const token = await loginUser(body);

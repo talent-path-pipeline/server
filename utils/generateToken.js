@@ -5,10 +5,9 @@ const jwt = require('jsonwebtoken');
  * @param {int} id
  * @param {string} persona
  */
-async function createToken(id, persona, fullName) {
+async function createToken(id, fullName) {
   const payload = {
     id,
-    persona,
     fullName
   };
   const additionalInformation = {

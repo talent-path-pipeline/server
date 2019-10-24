@@ -31,7 +31,7 @@ async function userExists(email) {
  * @param {string} location
  * @param {string} personaType
  */
-async function createUser(email, password, salt, fullName, location, personaType) {
+async function createUser(email, password, salt, fullName, location) {
   try {
     await User.create({
       email,
@@ -39,7 +39,6 @@ async function createUser(email, password, salt, fullName, location, personaType
       salt,
       fullName,
       location,
-      personaType,
     });
   } catch (err) {
     throw err;
@@ -58,7 +57,7 @@ async function getUserPrivate(email) {
       where: {
         email,
       },
-      attributes: ['uuid', 'email', 'salt', 'password', 'fullName', 'location', 'personaType', 'createdAt', 'updatedAt']
+      attributes: ['uuid', 'email', 'salt', 'password', 'fullName', 'location', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
@@ -77,7 +76,7 @@ async function getUserPublic(email) {
       where: {
         email,
       },
-      attributes: ['uuid', 'email', 'fullName', 'location', 'personaType', 'createdAt', 'updatedAt']
+      attributes: ['uuid', 'email', 'fullName', 'location', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
@@ -92,7 +91,7 @@ async function getUserPublic(email) {
 async function getAllUsers() {
   try {
     return await User.findAll({
-      attributes: ['uuid', 'email', 'fullName', 'location', 'personaType', 'createdAt', 'updatedAt']
+      attributes: ['uuid', 'email', 'fullName', 'location', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
@@ -139,13 +138,12 @@ async function storeToken(uuid, token) {
  * @param {string} personaType
  * @param {string} uuid The stored id in the JWT that corresponds with a user.
  */
-async function updateUserData(email, fullName, location, personaType, uuid) {
+async function updateUserData(email, fullName, location, uuid) {
   try {
     await User.update({ 
       email,
       fullName,
       location,
-      personaType,
     }, { where: { uuid } });
   } catch (err) {
     throw err;
