@@ -29,9 +29,9 @@ async function userExists(email) {
  * @param {string} salt
  * @param {string} fullName
  * @param {string} location
- * @param {string} persona
+ * @param {string} personaType
  */
-async function createUser(email, password, salt, fullName, location, persona) {
+async function createUser(email, password, salt, fullName, location, personaType) {
   try {
     await User.create({
       email,
@@ -39,7 +39,7 @@ async function createUser(email, password, salt, fullName, location, persona) {
       salt,
       fullName,
       location,
-      persona,
+      personaType,
     });
   } catch (err) {
     throw err;
@@ -58,7 +58,7 @@ async function getUserPrivate(email) {
       where: {
         email,
       },
-      attributes: ['uuid', 'email', 'salt', 'password', 'fullName', 'location', 'persona', 'createdAt', 'updatedAt']
+      attributes: ['uuid', 'email', 'salt', 'password', 'fullName', 'location', 'personaType', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
@@ -77,7 +77,7 @@ async function getUserPublic(email) {
       where: {
         email,
       },
-      attributes: ['uuid', 'email', 'fullName', 'location', 'persona', 'createdAt', 'updatedAt']
+      attributes: ['uuid', 'email', 'fullName', 'location', 'personaType', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
@@ -92,7 +92,7 @@ async function getUserPublic(email) {
 async function getAllUsers() {
   try {
     return await User.findAll({
-      attributes: ['uuid', 'email', 'fullName', 'location', 'persona', 'createdAt', 'updatedAt']
+      attributes: ['uuid', 'email', 'fullName', 'location', 'personaType', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
@@ -136,16 +136,16 @@ async function storeToken(uuid, token) {
  * @param {string} email
  * @param {string} fullName
  * @param {string} location
- * @param {string} persona
+ * @param {string} personaType
  * @param {string} uuid The stored id in the JWT that corresponds with a user.
  */
-async function updateUserData(email, fullName, location, persona, uuid) {
+async function updateUserData(email, fullName, location, personaType, uuid) {
   try {
     await User.update({ 
       email,
       fullName,
       location,
-      persona,
+      personaType,
     }, { where: { uuid } });
   } catch (err) {
     throw err;
