@@ -52,6 +52,7 @@ exports.register = async (request, response, next) => {
       .set('token', `Bearer ${token}`)
       .send({message: 'Registration  & Login Successful.', token});
   } catch (err) {
+    console.log(err);
     next(err);
   }
 }; 

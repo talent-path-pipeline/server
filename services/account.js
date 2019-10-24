@@ -38,15 +38,15 @@ async function readUser(email) {
  * @param {string} fullName
  * @param {string} password
  * @param {string} location
- * @param {string} persona
+ * @param {string} personaType
  */
-async function registerUser({ email, fullName, password, location, persona }) {
+async function registerUser({ email, fullName, password, location, personaType }) {
   try {
     if (await userExists(email)) {
       throw new ErrorWithHTTPStatus('User already exists.', 400);
     }
     const { hash, salt } = await hashPassword(password);
-    await createUser(email, hash, salt, fullName, location, persona);
+    await createUser(email, hash, salt, fullName, location, personaType);
   } catch (err) {
     throw err;
   }
@@ -80,12 +80,12 @@ async function loginUser({ email, password}) {
  * @param {string} email
  * @param {string} password
  * @param {string} fullName
- * @param {string} persona
+ * @param {string} personaType
  * @returns {Object} Updated User
  */
-async function updateUser({ email, fullName, location, persona, uuid }) {
+async function updateUser({ email, fullName, location, personaType, uuid }) {
   try {
-    await updateUserData(email, fullName, location, persona, uuid);
+    await updateUserData(email, fullName, location, personaType, uuid);
     return await getUserPublic(email);
   } catch (err) {
     throw err;
