@@ -39,10 +39,10 @@ exports.register = async (request, response, next) => {
     const { body } = request;
     const result = validate(body, registrationConstraints);
     if (result !== undefined) {
-      throw new ErrorWithHTTPStatus('Invalid data received.', 400);
+      throw new ErrorWithHTTPStatus('Invalid data received.', 400); 
     }
-    // Appending persona for candidate user (default)
-    body.persona = 'candidate'; 
+    // Appending personaType for candidate user (default)
+    body.personaType = 'candidate'; 
     await registerUser(body);
     // new stuff
     const token = await loginUser(body);

@@ -54,7 +54,7 @@ const updateDataConstraints = {
   location: {
     length: { minimum: 2 }
   },
-  persona: {
+  personaType: {
     length: { minimum: 3 }
   },
 };
