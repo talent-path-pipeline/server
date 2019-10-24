@@ -1,13 +1,17 @@
 const { Sequelize } = require('sequelize');
 
 module.exports = (sequelize, type) => sequelize.define(
-  'persona',
+  'course',
   {
     // attributes
-    type: {
+    uuid: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
+    },
+    courseName: {
       type: Sequelize.STRING,
       allowNull: false,
-      primaryKey: true,
     },
   },
   {

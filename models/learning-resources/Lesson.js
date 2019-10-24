@@ -1,40 +1,28 @@
 const { Sequelize } = require('sequelize');
 
 module.exports = (sequelize, type) => sequelize.define(
-  'user',
+  'lesson',
   {
+    // attributes
     uuid: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
-    email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    password: {
+    videoURL: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    salt: {
+    title: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    token: {
-      type: Sequelize.STRING(500),
-      allowNull: true,
-    },
-    fullName: {
+    description: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    location: {
-      type: Sequelize.STRING(500),
-      allowNull: true,
-    },
-    personaType: {
-      type: Sequelize.STRING,
+    creator: {
+      type: Sequelize.UUID,
       allowNull: false,
     },
   },
