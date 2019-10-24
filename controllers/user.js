@@ -78,7 +78,7 @@ exports.login = async (request, response, next) => {
 };
 
 // DELETE User
-// Route: /api/user/:id
+// Route: /api/user/
 exports.delete = async (request, response, next) => {
   try {
     const { body } = request;
@@ -98,7 +98,7 @@ exports.delete = async (request, response, next) => {
 };
 
 // PATCH User
-// Route: /api/user/:id
+// Route: /api/user/
 exports.update = async (request, response, next) => {
   try {
     const { body } = request;
