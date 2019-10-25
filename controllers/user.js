@@ -16,9 +16,8 @@ exports.register = async (request, response, next) => {
     // Appending persona for candidate user (default)
     body.persona = 'candidate';
     await registerUser(body);
-    // new stuff
+    // Returns a token to the user
     const token = await loginUser(body);
-    // response.status(200).send('Registration Successful.');
     response
       .status(200)
       .set('token', `Bearer ${token}`)

@@ -38,7 +38,7 @@ async function createUser(email, password, salt, fullName, location, persona) {
       salt,
       fullName,
       location,
-      persona,
+      personaType: persona,
     });
   } catch (err) {
     throw err;

@@ -37,10 +37,10 @@ const Recruiter = RecruiterModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
 const CandidateLesson = CandidateLessonsModel(sequelize, Sequelize);
 
-
+/* 
 // associations dump
-Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
-User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
+Persona.hasMany(User, { sourceKey: 'type' });
+User.belongsTo(Persona, {  targetKey: 'type' });
 Persona.belongsTo(Permission);
 Permission.hasMany(Persona);
 Candidate.belongsTo(Question);
@@ -59,8 +59,8 @@ Course.hasMany(Lesson);
 Lesson.belongsTo(Course);
 Lesson.belongsToMany(Candidate, { through: CandidateLesson });
 Candidate.belongsToMany(Lesson, { through: CandidateLesson });
-
-sequelize.sync({force: true}).then(() => {
+*/
+sequelize.sync({force: false}).then(() => {
   console.log(`Database & Tables created`);
 });
 /* sequelize.sync().then(() => {

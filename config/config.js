@@ -7,23 +7,6 @@ const Sequelize = require('sequelize');
 
 console.log('Creating a database connection.');
 
-// const sequelize = new Sequelize(
-//   process.env.DATABASE,
-//   process.env.DATABASE_USER,
-//   process.env.DATABASE_PASSWORD,
-//   {
-//     host: process.env.DATABASE_URL,
-//     dialect: 'postgres',
-//     logging: false,
-//   }
-// );
-
-// const sequelize = new Sequelize({
-//   host: process.env.DATABASE_URL,
-//   dialect: 'postgres',
-//   logging: false,
-// });
-
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
   protocol: 'postgres',
@@ -31,7 +14,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   logging: false,
 
   dialectOptions: {
-    ssl: true,
+    ssl: false,
   },
 
   pool: {
