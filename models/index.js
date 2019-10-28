@@ -39,8 +39,8 @@ const CandidateLesson = CandidateLessonsModel(sequelize, Sequelize);
 
 
 // associations dump
-Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
-User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
+// User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
+// Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
 Persona.belongsTo(Permission);
 Permission.hasMany(Persona);
 Candidate.belongsTo(Question);
@@ -57,15 +57,15 @@ User.hasMany(Lesson, {foreignKey: 'creator', sourceKey: 'uuid'});
 Lesson.belongsTo(User, {foreignKey: 'creator', targetKey: 'uuid'});
 Course.hasMany(Lesson);
 Lesson.belongsTo(Course);
-Lesson.belongsToMany(Candidate, { through: CandidateLesson });
+Lesson.belongsToMany(Candidate, { through: CandidateLesson }); 
 Candidate.belongsToMany(Lesson, { through: CandidateLesson });
 
-sequelize.sync({force: true}).then(() => {
+// sequelize.sync({force: true}).then(() => {
+//   console.log(`Database & Tables created`);
+// });
+sequelize.sync().then(() => {
   console.log(`Database & Tables created`);
 });
-/* sequelize.sync().then(() => {
-  console.log(`Database & Tables created`);
-}); */
 
 module.exports = {
   User,

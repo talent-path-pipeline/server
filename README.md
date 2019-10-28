@@ -89,7 +89,8 @@ server/
        | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Created user object                                          |
        | (body)                                                       | Example                                                      |
        |                                                              | ![image](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/code-snippets/registration.png) <br><br> Parameter content type: **application/json** |
-       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Returns a Success Message and a Token:  <br> ![image](./data/images/loginResponse.png) <br><br>   Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        | 400                                                          | ``Invalid username or password supplied``                    |
@@ -104,9 +105,61 @@ server/
        | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Logs a user in                                               |
        | (body)                                                       | Example                                                      |
        |                                                              | ![Login](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/code-snippets/login.png)<br> Parameter content type: **application/json** |
-       | **Response**                                                 | Parameter content type: **application/json**                 |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Returns a Success Message and a Token:  <br> ![image](./data/images/loginResponse.png) <br><br>   Parameter content type: **application/json** |
        | **Code**                                                     | **Description**                                              |
        | 200                                                          | ``successful operation``                                     |
        |                                                              | **Headers:**<br><br>**X-Token**: User JWT token **(string)** |
        | 400                                                          | ``Invalid username or password supplied``                    |
+
+ 2. **Read**
+
+   - ![GET](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/http-verbs/GET.png) **/api/user** - Get user(s)
+
+     - **Parameters**
+
+       | Name                                                         | Description                                                  |
+       | ------------------------------------------------------------ | ------------------------------------------------------------ |
+       | **body** ![optional](./data/images/optional.png) | Email of User you want to get.  <br>If not included, returns all users.       |
+       | (body)                                                       | Example                                                      |
+       |                                                              | ![image](./data/images/getUser.png) <br><br> Parameter content type: **application/json** |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Returns all Users:  <br> ![image](./data/images/getAllResponse.png) <br><br> Or <br><br>Returns One User:  <br> ![image](./data/images/getOneResponse.png) <br><br>  Parameter content type: **application/json** |
+       | **Code**                                                     | **Description**                                              |
+       | 200                                                          | ``successful operation``                                     |
+       | 400                                                          | ``An error has occurred: Invalid data received.``                    |
        
+ 3. **Update**
+
+   - ![PATCH](./data/images/PATCH.png) **/api/user** - Get user(s)
+
+     - **Parameters**
+
+       | Name                                                         | Description                                                  |
+       | ------------------------------------------------------------ | ------------------------------------------------------------ |
+       | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Email of User you want to update. {email}<br> Data that you want to update. {newData} <br>-- newData can be an empty object. <br> -- Only include data you want to update  <br> -- You can't update a password with this route      |
+       | (body)                                                       | Example                                                      |
+       |                                                              | ![image](./data/images/updateUser.png) <br> ![image2](./data/images/updateUser2.png) <br><br> Parameter content type: **application/json** |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Updates a User:  <br> ![image](./data/images/updateResponse.png) <br><br>  Parameter content type: **application/json** |
+       | **Code**                                                     | **Description**                                              |
+       | 200                                                          | ``successful operation``                                     |
+       | 400                                                          | ``An error has occurred: Invalid data received.``                    |
+
+ 4. **Delete**
+
+   - ![DELETE](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/http-verbs/DELETE.png) **/api/user** - Deletes a user
+
+     - **Parameters**
+
+       | Name                                                         | Description                                                  |
+       | ------------------------------------------------------------ | ------------------------------------------------------------ |
+       | **body** ![required](https://raw.githubusercontent.com/Zyxel-1/Snips-Server/master/images/required.png) | Email of User you want to delete.       |
+       | (body)                                                       | Example                                                      |
+       |                                                              | ![image](./data/images/getUser.png) <br><br> Parameter content type: **application/json** |
+       | **Response**                                                         | Example                                                  | 
+       |                                                              | Deletes a User:  <br> ![image](./data/images/deleteResponse.png) <br><br>  Parameter content type: **application/json** |
+       | **Code**                                                     | **Description**                                              |
+       | 200                                                          | ``OK``                                     |
+       | 400                                                          | ``An error has occurred: Invalid data received.``                    |
+    
