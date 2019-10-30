@@ -59,7 +59,7 @@ const getNestedCourse_Helper = async (course_id, given_course_data = undefined) 
  * @returns {Promise<PathData>} the full nested data for the requested path
  * @throws {ErrorWithHttpStatus} errors if things aren't found
  */
-const getNestedPath_Helper = async (path_id, given_path_data) => {
+const getNestedPath_Helper = async (path_id, given_path_data = undefined) => {
   const path_data = given_path_data
     ? { ...given_path_data }
     : await getElementById(Path, path_id);

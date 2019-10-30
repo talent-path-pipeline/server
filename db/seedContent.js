@@ -109,10 +109,11 @@ async function seedContent(seed_data) {
   // time/order later, to ensure that all of the paths get seeded before all of the
   // courses, and all of the courses get seeded before all of the lessons while still
   // enabling the lessons to have access to the correct course ids and courses the path ids
-  const course_funcs = [];
   const lesson_funcs = [];
+  const course_funcs = [];
   const path_funcs = [];
   // set up each path seed to be triggered later
+  // this forEach loop fills the path_funcs array with callbacks
   seed_data.forEach(path => {
     path_funcs.push(async () => {
       const { uuid: path_id } = await seedPath(path);
@@ -130,11 +131,15 @@ async function seedContent(seed_data) {
   });
   // TODO: error handling/graceful failure
   // map actually triggers the functions to start resolving
-  await Promise.all(path_funcs.map(func => func()));
+  // now the path_funcs array is full of callbacks, the course_funcs and lesson_funcs arrays are empty
+  await Promise.all(path_funcs.map(pathFunc => pathFunc()));
   console.log('Finished seeding all paths');
-  await Promise.all(course_funcs.map(func => func()));
+  // now path_funcs are all executed, so course_funcs now full of callbacks, lesson_funcs still empty
+  await Promise.all(course_funcs.map(courseFunc => courseFunc()));
   console.log('Finished seeding all courses');
-  await Promise.all(lesson_funcs.map(func => func()));
+  // now path)funcs and course_funcs all executed, lesson_funcs now full of callbacks
+  await Promise.all(lesson_funcs.map(lessonFunc => lessonFunc()));
+  // now all functions have been executed
   console.log('Finished seeding all lessons');
   console.log('Seeding completed.');
 }
