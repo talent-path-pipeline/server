@@ -15,7 +15,7 @@ function parseDuration(duration) {
   const time_pattern = `T(?<hours>${numbers}H)?(?<minutes>${numbers}M)?(?<seconds>${numbers}S)?`;
   const iso8601 = new RegExp(`${period_pattern}${time_pattern}`);
   const { groups } = duration.match(iso8601);
-  // coefficients to convert a time unit to the next smaller time unit
+  // coefficients to convert a time unit to the next smaller time unit down to a minimum of seconds
   const reduce_unit_coeffs = {
     years: 12,
     months: 4,

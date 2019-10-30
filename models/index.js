@@ -45,8 +45,8 @@ const CandidateLesson = CandidateLessonsModel(sequelize, Sequelize);
 // https://sequelize.org/master/manual/associations.html
 // User.belongsTo(Persona, { foreignKey: 'personaType', targetKey: 'type' });
 // Persona.hasMany(User, { foreignKey: 'personaType', sourceKey: 'type' });
-Persona.belongsTo(Permission);
-Permission.hasMany(Persona);
+// Persona.belongsTo(Permission);
+// Permission.hasMany(Persona);
 // Candidate.belongsTo(Question);
 // Question.hasMany(Candidate);
 // Candidate.belongsTo(Recruiter, { foreignKey: 'contactedBy' });

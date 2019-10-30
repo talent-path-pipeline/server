@@ -137,7 +137,7 @@ async function seedContent(seed_data) {
   // now path_funcs are all executed, so course_funcs now full of callbacks, lesson_funcs still empty
   await Promise.all(course_funcs.map(courseFunc => courseFunc()));
   console.log('Finished seeding all courses');
-  // now path)funcs and course_funcs all executed, lesson_funcs now full of callbacks
+  // now path_funcs and course_funcs all executed, lesson_funcs now full of callbacks
   await Promise.all(lesson_funcs.map(lessonFunc => lessonFunc()));
   // now all functions have been executed
   console.log('Finished seeding all lessons');
