@@ -30,9 +30,9 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   timestamps: false,
   logging: false,
 
-  // dialectOptions: {
-  //   ssl: true,
-  // },
+  dialectOptions: {
+    ssl: process.env.DB_SSL !== 'false',
+  },
 
   pool: {
     max: 20,
