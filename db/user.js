@@ -17,6 +17,7 @@ async function userExists(email) {
     throw err;
   }
 }
+
 /**
  * createUser
  * @description Stores user data in the database
@@ -25,9 +26,9 @@ async function userExists(email) {
  * @param {string} salt
  * @param {string} fullName
  * @param {string} location
- * @param {string} persona
+ * @param {string} personaType
  */
-async function createUser(email, password, salt, fullName, location, persona) {
+async function createUser(email, password, salt, fullName, location) {
   try {
     await User.create({
       email,
@@ -35,29 +36,65 @@ async function createUser(email, password, salt, fullName, location, persona) {
       salt,
       fullName,
       location,
-      persona,
     });
   } catch (err) {
     throw err;
   }
 }
+
 /**
- * getPassword
- * @description Gets user data.
+ * Gets a user with an email INCLUDING salt and password
+ * @description Gets all of a user's data.
  * @param {string} email
  * @returns {object} An object containing hash and salt
  */
-async function getUser(email) {
+async function getUserPrivate(email) {
   try {
     return await User.findOne({
       where: {
         email,
       },
+      attributes: ['uuid', 'email', 'salt', 'password', 'fullName', 'location', 'createdAt', 'updatedAt']
     });
   } catch (err) {
     throw err;
   }
 }
+
+/**
+ * Gets a user with an email INCLUDING salt
+ * @description Gets user data.
+ * @param {string} email
+ * @returns {object} An object containing hash and salt
+ */
+async function getUserPublic(email) {
+  try {
+    return await User.findOne({
+      where: {
+        email,
+      },
+      attributes: ['uuid', 'email', 'fullName', 'location', 'createdAt', 'updatedAt']
+    });
+  } catch (err) {
+    throw err;
+  }
+}
+
+/**
+ * getAllUsers
+ * @description Gets all user data.
+ * @returns {object} An object containing hash and salt
+ */
+async function getAllUsers() {
+  try {
+    return await User.findAll({
+      attributes: ['uuid', 'email', 'fullName', 'location', 'createdAt', 'updatedAt']
+    });
+  } catch (err) {
+    throw err;
+  }
+}
+
 /**
  * Finds and returns user token of already logged in user
  * @param {string} id The stored id in the JWT that corresponds with a user.
@@ -74,10 +111,11 @@ async function getUserToken(id) {
     throw err;
   }
 }
+
 /**
  * storeToken
  * @description Stores token in the user's database
- * @param {string} email
+ * @param {string} uuid The stored id in the JWT that corresponds with a user.
  * @param {string} token
  */
 async function storeToken(uuid, token) {
@@ -87,4 +125,40 @@ async function storeToken(uuid, token) {
     throw err;
   }
 }
-module.exports = { userExists, createUser, getUser, storeToken, getUserToken };
+
+/**
+ * Updates a user
+ * @description Updates a users data (not including password)
+ * @param {string} email
+ * @param {string} fullName
+ * @param {string} location
+ * @param {string} personaType
+ * @param {string} uuid The stored id in the JWT that corresponds with a user.
+ */
+async function updateUserData(email, fullName, location, uuid) {
+  try {
+    await User.update({ 
+      email,
+      fullName,
+      location,
+    }, { where: { uuid } });
+  } catch (err) {
+    throw err;
+  }
+}
+
+/**
+ * Delete a user
+ * @description Deletes a user with a uuid
+ * @param {string} id The stored id in the JWT that corresponds with a user.
+ */
+async function destroyUser(email) { 
+  try {
+    await User.destroy({ where: { email } });
+  } catch (err) {
+    throw err;
+  }
+}
+
+
+module.exports = { userExists, createUser, getUserPrivate, getUserPublic, getAllUsers, storeToken, getUserToken, updateUserData, destroyUser };

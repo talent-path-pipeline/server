@@ -3,23 +3,13 @@
  * @description: Contains all routes related to user functions.
  */
 const router = require('express').Router();
-const user = require('../../controllers/user');
+const user = require('../../controllers/userController');
 
 /**
  *  [GET] /
- *  @description: Testing purposes
+ *  @description: Reads all users or one user if inputed with email
  */
-router.get('/', (req, res) => {
-  res.send('You are getting ALL users!');
-});
-
-/**
- *  [GET] /:id
- *  @description: Testing purposes
- */
-router.get('/:id', (req, res) => {
-  res.send('You are getting a user by ID!');
-});
+router.get('/',  user.getUsers);
 
 /**
  *  [POST] /
@@ -35,18 +25,14 @@ router.post('/login', user.login);
 
 /**
  *  [DELETE] /:id
- *  @description: Testing purposes
+ *  @description: Deletes a user by ID
  */
-router.delete('/:id', (req, res) => {
-  res.send('Deleting a user');
-});
+router.delete('/',  user.delete);
 
 /**
  *  [PATCH] /:id
- *  @description: Testing purposes
+ *  @description: Updates a user by ID
  */
-router.patch('/:id', (req, res) => {
-  res.send('Updating a user');
-});
+router.patch('/',  user.update);
 
 module.exports = router;

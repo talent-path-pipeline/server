@@ -33,10 +33,10 @@ module.exports = (sequelize, type) => sequelize.define(
       type: Sequelize.STRING(500),
       allowNull: true,
     },
-    personaType: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
+    // personaType: {
+    //   type: Sequelize.STRING,
+    //   allowNull: false,
+    // },
   },
   {
     // options

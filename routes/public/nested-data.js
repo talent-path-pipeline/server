@@ -3,7 +3,7 @@
  * @description: Contains all routes related to getting fully nested data representation objects
  */
 const router = require('express').Router();
-const dataController = require('../../controllers/nested-data');
+const dataController = require('../../controllers/nestedDataController');
 
 /**
  *  [GET] /
