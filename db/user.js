@@ -1,7 +1,4 @@
-const UserModel = require('../models/authentication/User');
-const { sequelize, Sequelize } = require('../config/config');
-
-const User = UserModel(sequelize, Sequelize);
+const { User } = require('../models');
 
 /**
  * userExists
@@ -106,7 +103,7 @@ async function getUserToken(id) {
   try {
     const result = await User.findOne({
       where: {
-        uuid:id,
+        uuid: id,
       },
     });
     return { token: result.token, id: result.uuid };

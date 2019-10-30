@@ -31,7 +31,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   logging: false,
 
   dialectOptions: {
-    ssl: true,
+    ssl: process.env.DB_SSL !== 'false',
   },
 
   pool: {

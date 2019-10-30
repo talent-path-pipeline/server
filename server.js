@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 require('dotenv/config');
 // Server and authentication modules
 const express = require('express');
@@ -7,27 +8,30 @@ const cors = require('cors');
 const JWTStrategy = require('./middleware/passport');
 const errorHandler = require('./middleware/errorHandler');
 // Database Setup
-const { sequelize } = require('./models');
+const { sequelize } = require('./config/config');
+const { seedContent } = require('./db/seedContent');
+const DM_PATH = require('./db/DM_PATH_PLAN');
 
 passport.use(JWTStrategy);
 const app = express();
 
-// Logs requests to the console
-// app.use(logger('dev'));
-
-// Parse incoming requests data
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(cors());
 app.use(passport.initialize());
 app.use(express.json());
-app.use('/', require('./routes/index.js'));
+app.use('/', require('./routes'));
 
 app.use(errorHandler);
 
-sequelize.sync().then(() => {
+function startServer() {
   app.listen(process.env.PORT || 5000, () => {
     console.log(`Server is running on port ${process.env.PORT}!`);
   });
+}
+
+sequelize.sync({ force: false }).then(async () => {
+  console.log(`Database tables created/synced`);
+  if (process.env.SEEDING === 'true') {
+    await seedContent([DM_PATH]);
+  }
+  startServer();
 });

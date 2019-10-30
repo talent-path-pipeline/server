@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/talent-path-pipeline/server#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
@@ -33,6 +34,7 @@
     "validate.js": "^0.13.1"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "eslint-config-prettier": "^6.4.0"
   }
 }
