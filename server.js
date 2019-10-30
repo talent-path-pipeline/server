@@ -9,7 +9,7 @@ const JWTStrategy = require('./middleware/passport');
 const errorHandler = require('./middleware/errorHandler');
 // Database Setup
 const { sequelize } = require('./config/config');
-const { seed } = require('./db/seed');
+const { seedContent } = require('./db/seedContent');
 const DM_PATH = require('./db/DM_PATH_PLAN');
 
 passport.use(JWTStrategy);
@@ -28,11 +28,10 @@ function startServer() {
   });
 }
 
-if (process.env.SEEDING === 'true') {
-  seed([DM_PATH]).then(startServer);
-} else {
-  sequelize.sync({ force: false }).then(() => {
-    console.log(`Database tables created/synced`);
-    startServer();
-  });
-}
+sequelize.sync({ force: false }).then(async () => {
+  console.log(`Database tables created/synced`);
+  if (process.env.SEEDING === 'true') {
+    await seedContent([DM_PATH]);
+  }
+  startServer();
+});

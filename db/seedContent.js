@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-const { sequelize } = require('../config/config');
 const { transformLesson } = require('../utils/transformers');
 const { Path, Course, Lesson } = require('../models');
 
@@ -93,15 +92,18 @@ async function seedPath({ title, subtitle, image_name }) {
 
 /**
  * Takes in an array of paths, each of which should contain all of the nested related data,
- * and seeds all parts of it into the respective tables with correct relations
+ * and seeds all parts of it into the respective tables with correct relations. Force syncs
+ * the Path, Course, and Lesson tables.
  * @param {PathData[]} seed_data the data to be seeded, should be in the form of an array
  *            of path objects, each of which contain the nested related course objects,
  *            which each in turn contain the nested related lesson objects
  */
-async function seed(seed_data) {
+async function seedContent(seed_data) {
   console.log('Seeding...');
-  await sequelize.sync({ force: true });
-  console.log('Tables reset and synced');
+  await Path.sync({ force: true });
+  await Course.sync({ force: true });
+  await Lesson.sync({ force: true });
+  console.log('Path, Course, and Lesson Tables reset and synced');
 
   // creates arrays of functions that return promises that can be called at the correct
   // time/order later, to ensure that all of the paths get seeded before all of the
@@ -137,4 +139,4 @@ async function seed(seed_data) {
   console.log('Seeding completed.');
 }
 
-module.exports = { seed, seedLesson, seedCourse, seedPath };
+module.exports = { seedContent, seedLesson, seedCourse, seedPath };
