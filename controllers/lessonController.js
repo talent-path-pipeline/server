@@ -1,4 +1,5 @@
 const { Lesson } = require('../models');
+const { transformLesson } = require('../utils/transformers');
 const ErrorWithHttpStatus = require('../utils/error.httpStatus.utils');
 
 // =================================================================
@@ -43,8 +44,11 @@ exports.getLessonByCourseId = (request, response, next) => {
 // =================================================================
 // POST requests
 
-exports.createLesson = (request, response, next) => {
-  Lesson.create(request.body)
+exports.createLesson = async (request, response, next) => {
+  if (!Object.keys(request.body).length) {
+    throw new ErrorWithHttpStatus('No body provided', 400);
+  }
+  Lesson.create(await transformLesson(request.body, request.body.courseUuid))
     .then(data => {
       response.status(201).send(data);
     })
