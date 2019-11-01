@@ -1,11 +1,46 @@
 # Server
-
+## Overview
 > Talent Path Pipeline Back-end
 
+---
 ## Table of Contents
 
 [TOC]
 
+---
+## Release Notes
+
+### Current Release:
+Pre-Alpha (v0.0)
+
+### Release Details:
+<!-- #### Upgrade Steps -->
+<!--Includes:
+      - Steps users have to take when they upgrade beyond just dumping the dependency.
+      - Pseudocode that highlights what code should change and how.
+      - Call out if users are recommended to upgrade because of known problems with older releases. -->
+
+#### New Features
+<!-- Includes:
+      - the new feature 
+      - when/why to use it
+      - pictures! 
+      - caveats/warnings? 
+      - Is it a beta feature? -->
+
+
+#### Bug Fixes
+<!-- Includes:
+      - existing feature/functionality that now works as intended or expected.-->
+- No bugs...
+
+#### Improvements
+<!-- Includes:
+      - Improvements/enhancements to a:
+        - workflow, performance, logging, error messaging, or user experience -->
+- No feedback...
+
+---
 ## Getting Started
 
 The following setup will be broken down into two sections, setting it up for local development and setting it up for deployment on [heroku](https://www.heroku.com).
@@ -28,6 +63,7 @@ The following setup will be broken down into two sections, setting it up for loc
 
 **Coming Soon!**
 
+---
 ## Coding Standards
 
 ### Naming conventions:
@@ -43,6 +79,7 @@ The following setup will be broken down into two sections, setting it up for loc
 
 We are using VSCode for development with the ESLint and Prettier extensions for consistency. Configuration files for both extensions are included in the root of this repository. If contributing, please either install those extensions or read through them and ensure your code complies with the rules listed.
 
+---
 ## Basic Structure
 
 The back-end is structure like the following:
@@ -74,6 +111,7 @@ server/
 
 **Descriptions coming soon!**
 
+---
 ## Usage
 
 ### Routes to use
