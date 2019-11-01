@@ -4,8 +4,11 @@
 
 ---
 ## Table of Contents
-
-[TOC]
+- [Release Notes](##Release%20Notes)
+- [Getting Started](##Getting%20Started)
+- [Coding Standards](##Coding%20Standards)
+- [Basic Structure](##Basic%20Structure)
+- [Usage](##Usage)
 
 ---
 ## Release Notes
