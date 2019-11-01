@@ -30,6 +30,18 @@ Pre-Alpha (v0.0)
       - pictures! 
       - caveats/warnings? 
       - Is it a beta feature? -->
+- Login/Sign Up Routes
+  - Generate Token on login/signup
+  - Hash Passwords
+- Users CRUD API
+- Lessons CRUD API
+- Paths CRUD API
+- Courses CRUD API
+- YouTube
+  - Transformer to translate length of videos
+
+
+
 
 
 #### Bug Fixes
