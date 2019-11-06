@@ -12,7 +12,7 @@
 const example_session = {
   slug: 'example',
   order: 0,
-  video_id: 'MFCzwiqlnCE',
+  video_id: 'byva0hOj8CU',
   title: 'An Example Session',
   description: `There's no better way to understand D&D than to see a session in action! Watch a D&D group in action as a DM leads their party through a basic roleplaying session.`,
 };
