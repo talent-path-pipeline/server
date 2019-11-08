@@ -78,4 +78,4 @@ async function transformLesson(
   return new_lesson;
 }
 
-module.exports = { parseDuration, transformLesson };
+module.exports = { YOUTUBE_API_URL, parseDuration, transformLesson };

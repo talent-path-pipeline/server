@@ -1,4 +1,11 @@
-// api call: https://www.googleapis.com/youtube/v3/videos?part=[PART TYPE(s), comma separated]&id=[VIDEO ID]&key=[API KEY]
+/**
+ * api call: https://www.googleapis.com/youtube/v3/videos?[PARAMETERS separated by '&']
+ * @param part comma separated strings specifying parts - e.g. part=snippet,contentDetails
+ * @param fields comma separated strings to limit which parts/keys you get, formatted like routes
+ *               - e.g. fields=items/id,items/snippet/channelId
+ * @param id the id of the desired youtube video - e.g. id=wizuCHNGvwc
+ * @param key the google API key - e.g. key=blahblahblah
+ */
 // part type = snippet gets: publishedAt, channelId, title, description, thumbnails, channelTitle, tags, categoryId
 // part type = contentDetails gets: duration, dimension, definition, caption, licensedContent, projection
 
