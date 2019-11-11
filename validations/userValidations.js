@@ -1,19 +1,62 @@
 /**
- * Email Validation
- * @param {string} email Email used to register
- * @returns {boolean} True if passes validations else false.
+ * User Constraints
+ * @description: Used with validation.js npm package to validate user registration data.
  */
-function emailValidation(email) {
-  // This is a placeholder
-  return true;
-}
-/**
- * Password Validation
- * @param {string} password Password used to register
- * @returns {boolean} True if passes validations else false.
- */
-function passwordValidation(password) {
-  // This is a placeholder
-  return true;
-}
-module.exports = { emailValidation, passwordValidation };
+const registrationConstraints = {
+  email: {
+    email: true,
+    presence: true,
+    length: { minimum: 3 }
+  },
+  password: {
+    presence: true,
+    length: { minimum: 8 }
+  },
+  fullName: {
+    presence: true,
+    length: { minimum: 1 } 
+  },
+  location: {
+    length: { minimum: 2 }
+  }
+};
+
+const loginConstraints = {
+  email: {
+    email: true,
+    presence: true,
+    length: { minimum: 3 }
+  },
+  password: {
+    presence: true,
+    length: { minimum: 8 }
+  }
+};
+
+const emailConstraints = {
+  email: {
+    email: true,
+    presence: true,
+    length: { minimum: 3 }
+  }
+};
+
+const updateDataConstraints = {
+  email: {
+    email: true,
+    presence: true,
+    length: { minimum: 3 }
+  },
+  fullName: {
+    presence: true,
+    length: { minimum: 1 }
+  },
+  location: {
+    length: { minimum: 2 }
+  },
+  // personaType: {
+  //   length: { minimum: 3 }
+  // },
+};
+ 
+module.exports = { registrationConstraints, loginConstraints, emailConstraints, updateDataConstraints };

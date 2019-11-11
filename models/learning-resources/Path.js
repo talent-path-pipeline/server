@@ -1,21 +1,30 @@
+/* eslint-disable implicit-arrow-linebreak */
 const { Sequelize } = require('sequelize');
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (sequelize, type) =>
   sequelize.define(
     'path',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
-      pathName: {
+      title: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      subtitle: Sequelize.STRING,
+      image_name: {
+        type: Sequelize.STRING,
+        defaultValue: 'path-image-main.jpg',
       },
     },
     {
       // options
-    }
+    },
   );
+
+// Path.hasMany(Course)

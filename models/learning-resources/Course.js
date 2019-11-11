@@ -1,41 +1,42 @@
+/* eslint-disable implicit-arrow-linebreak */
 const { Sequelize } = require('sequelize');
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (sequelize, type) =>
   sequelize.define(
-    'lesson',
+    'course',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
-      videoURL: {
+      slug: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       title: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       description: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      image_name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      courseName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      pathName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      instructorID: {
+      order: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
     },
     {
       // options
-    }
+    },
   );
+
+// Course.hasMany(Lesson)

@@ -2,17 +2,13 @@ const { Sequelize } = require('sequelize');
 
 module.exports = (sequelize, type) =>
   sequelize.define(
-    'permission',
+    'lessonTags',
     {
       // attributes
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      uuid: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-      },
-      permission: {
-        type: Sequelize.STRING,
-        allowNull: false,
       },
     },
     {
