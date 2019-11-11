@@ -12,7 +12,7 @@
 const example_session = {
   slug: 'example',
   order: 0,
-  video_id: 'MFCzwiqlnCE',
+  video_id: 'byva0hOj8CU',
   title: 'An Example Session',
   description: `There's no better way to understand D&D than to see a session in action! Watch a D&D group in action as a DM leads their party through a basic roleplaying session.`,
 };
@@ -125,14 +125,22 @@ const countdown_session0 = {
 const flavortown = {
   slug: 'flavortown',
   order: 0,
-  video_id: 'NjmkolUrrB4',
+  video_id: '3hdGi_Bwjd8',
   title: 'Flavortown',
+  description: `Settings are better when they're spruced up with smells, sights, and sounds! Learn how to describe environments and situations that your characters find themselves in with aplomb to fully immerse your players in the fantasy.`,
+};
+
+const flavortown2 = {
+  slug: 'flavortown2',
+  order: 1,
+  video_id: 'NjmkolUrrB4',
+  title: 'Flavortown (Pt. 2)',
   description: `Settings are better when they're spruced up with smells, sights, and sounds! Learn how to describe environments and situations that your characters find themselves in with aplomb to fully immerse your players in the fantasy.`,
 };
 
 const actor_in_you = {
   slug: 'roleplay',
-  order: 1,
+  order: 2,
   video_id: 'MXh7-UFxXc8',
   title: 'The Actor In You',
   description: `You don't need to be Mel Blanc or Matt Mercer to play many different characters at once! Practice your improv chops and learn how to craft compelling and differentiated NPCs for your party to love... or hate.`,
@@ -140,7 +148,7 @@ const actor_in_you = {
 
 const creatures = {
   slug: 'creatures',
-  order: 2,
+  order: 3,
   video_id: 'X78D3pmHVp0',
   title: 'Lions and Tigers and Owlbears, Oh My!',
   description: `The D&D world is filled with fascinating creatures--they can be your players' enemies, allies, or even pets! Watch this video for some suggestions of creatures to incorporate into your story to scare and delight your players.`,
@@ -148,7 +156,7 @@ const creatures = {
 
 const treasure = {
   slug: 'treasure',
-  order: 3,
+  order: 4,
   video_id: 'NmPZ7oLmS5s',
   title: 'Stuff Yourself',
   description: `Whether it's valuables hoarded by an evil red dragon you've just thwarted, a gift awarded by a grateful dryad, or simply the contents of a treasure chest in an abandoned dungeon room, interesting and exciting items are everywhere in the world of D&D... and this video shows how best to include them.`,
@@ -156,10 +164,18 @@ const treasure = {
 
 const random_tables = {
   slug: 'randomness',
-  order: 4,
-  video_id: '3hdGi_Bwjd8',
+  order: 5,
+  video_id: '0z_vI05D4rk',
   title: 'Well, That Was Random.',
   description: `Random encounter tables are a DM's best friend. Learn how to create a list of possible situations and sights that fit your setting that will flavor your party's experience--and keep things always in the hands of fate!`,
+};
+
+const planning_encounters = {
+  slug: 'encounters',
+  order: 6,
+  video_id: 'kpzuB0G0UEM',
+  title: 'An Elf, An Orc, And A Gnome Walk Into A Tavern...',
+  description: `Running a good, fun, and believable adventure requires variety! Having a good mix of all types of 'encounters' in your campaign--from social to exploration to combat--will really help things stay fresh. This video covers how to create and balance encounters for whatever part of your adventure you need.`,
 };
 
 // =============================================================
@@ -171,7 +187,15 @@ const worldbuilding = {
     'What world does your story live in? These next lessons cover the basics to crafting all of the essential D&D setpieces that will make your adventure special, from compelling characters to lofty locations.',
   image_name: 'splash-3.jpg',
   order: 2,
-  lessons: [flavortown, actor_in_you, creatures, treasure, random_tables],
+  lessons: [
+    flavortown,
+    flavortown2,
+    actor_in_you,
+    creatures,
+    treasure,
+    random_tables,
+    planning_encounters,
+  ],
 };
 
 // =============================================================
@@ -180,7 +204,9 @@ const worldbuilding = {
 const rules_rolls = {
   slug: 'rulesrolls',
   order: 0,
-  video_id: 'rKU2e5Xrx1k',
+  video_id: '5jD4HjQEJlc',
+  start: 270,
+  end: 901,
   title: 'Rules and Rolls',
   description: `Searching rooms, seducing spies, and triggering traps. This video covers the rules of rolling--learn how to respond when your players need to make a skill check, cast a saving throw, and more.`,
 };
@@ -188,7 +214,7 @@ const rules_rolls = {
 const combat = {
   slug: 'combat',
   order: 1,
-  video_id: 'cOGFmSXIvc8',
+  video_id: 'I03UuQ28nsQ',
   title: 'Roll for Initiative!',
   description: `A combat encounter has begun! This can be one of the most daunting experiences for new D&D-ers, but with this video, you'll know just how to run any battle or brawl with the perfect balance of challenge and fun.`,
 };
@@ -196,7 +222,7 @@ const combat = {
 const magic = {
   slug: 'magic',
   order: 2,
-  video_id: 'YkwhS-RPEhw',
+  video_id: 'hWC5Oq1Ex8k',
   title: 'Witchcraft and Wizardry',
   description: `Magic exists in the world of D&D, and it has its own strict set of rules. Learn the ins and outs of spellcasting, magic materials, and more.`,
 };
@@ -204,9 +230,17 @@ const magic = {
 const unexpected = {
   slug: 'unexpected',
   order: 3,
-  video_id: 'K0SjRJNENME',
+  video_id: 'rKU2e5Xrx1k',
   title: 'Expect the Unexpected',
   description: `So, your players were supposed to imprison the escaped orc convict... and they decided to adopt him as a foster son instead. In this video, learn what to do when everything goes exactly NOT as planned.`,
+};
+
+const on_track = {
+  slug: 'stayontrack',
+  order: 4,
+  video_id: '5DqRZSd2LSk',
+  title: 'Direct the Plot',
+  description: `So sometimes things go a little bit off the rails with your story, as discussed in the previous lesson. Sometimes there's nothing you can do about it, but other times, you can employ tricks to give your players freedom while still keeping them on track with your story.`,
 };
 
 // =============================================================
@@ -217,7 +251,7 @@ const lets_play = {
   description: `Your party is formed, your world is built... now there's nothing left to do but play! Learn the nitty-gritty of the D&D 5e mechanics in the following lessons.`,
   image_name: 'splash-5.jpg',
   order: 3,
-  lessons: [rules_rolls, combat, magic, unexpected],
+  lessons: [rules_rolls, combat, magic, unexpected, on_track],
 };
 
 // =============================================================
