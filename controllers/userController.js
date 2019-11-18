@@ -1,10 +1,17 @@
 const validate = require('validate.js');
-const { readAllUsers, readUser, registerUser, loginUser, updateUser, deleteUser } = require('../services/account');
+const {
+  readAllUsers,
+  readUser,
+  registerUser,
+  loginUser,
+  updateUser,
+  deleteUser,
+} = require('../services/account');
 const {
   registrationConstraints,
   loginConstraints,
   emailConstraints,
-  updateDataConstraints
+  updateDataConstraints,
 } = require('../validations/userValidations');
 const ErrorWithHTTPStatus = require('../utils/error.httpStatus.utils');
 
@@ -14,16 +21,16 @@ exports.getUsers = async (request, response, next) => {
   try {
     const { body } = request;
     // If there is no body then return all users
-    if(Object.keys(body).length == 0){
+    if (Object.keys(body).length == 0) {
       const users = await readAllUsers();
       response.send(users);
     } else {
       // Validate email
       const result = validate(body, emailConstraints);
-      if (result !== undefined) { 
+      if (result !== undefined) {
         throw new ErrorWithHTTPStatus('Invalid data received.', 400);
       }
-  
+
       const users = await readUser(body.email);
       response.send(users);
     }
@@ -39,10 +46,10 @@ exports.register = async (request, response, next) => {
     const { body } = request;
     const result = validate(body, registrationConstraints);
     if (result !== undefined) {
-      throw new ErrorWithHTTPStatus('Invalid data received.', 400); 
+      throw new ErrorWithHTTPStatus('Invalid data received.', 400);
     }
     // Appending personaType for candidate user (default)
-    // body.personaType = 'candidate'; 
+    // body.personaType = 'candidate';
     await registerUser(body);
     // new stuff
     const token = await loginUser(body);
@@ -50,19 +57,19 @@ exports.register = async (request, response, next) => {
     response
       .status(200)
       .set('token', `Bearer ${token}`)
-      .send({message: 'Registration  & Login Successful.', token});
+      .send({ message: 'Registration  & Login Successful.', token });
   } catch (err) {
     console.log(err);
     next(err);
   }
-}; 
- 
+};
+
 // POST Login
 // Route: /api/user/login
 exports.login = async (request, response, next) => {
   try {
     const { body } = request;
-    const result = validate(body, loginConstraints); 
+    const result = validate(body, loginConstraints);
     if (result !== undefined) {
       throw new ErrorWithHTTPStatus('Invalid data received.', 400);
     }
@@ -71,7 +78,7 @@ exports.login = async (request, response, next) => {
     response
       .status(200)
       .set('token', `Bearer ${token}`)
-      .send({message: 'Registration  & Login Successful.', token});
+      .send({ message: 'Registration  & Login Successful.', token });
   } catch (err) {
     next(err);
   }
@@ -85,13 +92,16 @@ exports.delete = async (request, response, next) => {
     // Validate email
     const result = validate(body, emailConstraints);
     if (result !== undefined) {
-      throw new ErrorWithHTTPStatus('Invalid data received. Please include a valid email.', 400);
+      throw new ErrorWithHTTPStatus(
+        'Invalid data received. Please include a valid email.',
+        400,
+      );
     }
     // Delete the user
     const deletedUser = await deleteUser(body.email);
     response
       .status(200)
-      .send({message: `${deletedUser.fullName} Successful Deleted.`, deletedUser});
+      .send({ message: `${deletedUser.fullName} Successful Deleted.`, deletedUser });
   } catch (err) {
     next(err);
   }
@@ -105,15 +115,21 @@ exports.update = async (request, response, next) => {
     // Validate email
     const result = validate(body, emailConstraints);
     if (result !== undefined) {
-      throw new ErrorWithHTTPStatus('Invalid data received. Please include a valid email.', 400);
+      throw new ErrorWithHTTPStatus(
+        'Invalid data received. Please include a valid email.',
+        400,
+      );
     }
     // Get old data
     let testData = await readUser(body.email);
     if (!body.newData) {
-      throw new ErrorWithHTTPStatus('Invalid data received. Please include a newData object.', 400);
+      throw new ErrorWithHTTPStatus(
+        'Invalid data received. Please include a newData object.',
+        400,
+      );
     }
     for (let [key, value] of Object.entries(body.newData)) {
-      testData[key]=value;
+      testData[key] = value;
     }
 
     // Validate updateData
@@ -122,11 +138,11 @@ exports.update = async (request, response, next) => {
       throw new ErrorWithHTTPStatus('Invalid data received.', 400);
     }
 
-    const newUser = await updateUser(testData.dataValues)
-    
+    const newUser = await updateUser(testData.dataValues);
+
     response
       .status(200)
-      .send({message: `Update ${testData.fullName} Successful.`, newUser});
+      .send({ message: `Update ${testData.fullName} Successful.`, newUser });
   } catch (err) {
     next(err);
   }
