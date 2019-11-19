@@ -10,12 +10,14 @@ module.exports = (sequelize, type) => sequelize.define(
       primaryKey: true,
     },
     timestamp: {
-      type: Sequelize.DATE,
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
       allowNull: false,
     },
     completed: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
+      allowNull: false,
     }
   },
   {
