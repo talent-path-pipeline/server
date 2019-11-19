@@ -9,28 +9,25 @@
 | :--- |
 |  timestamp |
 |  completed *(boolean)* |
-| userUuid *(uuid)* |
-|  lessonUuid *(uuid)* |
+| userUuid *(uuid)* FK |
+|  lessonUuid *(uuid)* FK |
+| courseUuid *(uuid)* FK |
 
-- Add UserCourses
-
-|  **UserCourses** |
-| :--- |
-|  completed *(boolean)* |
-|  userUuid *(uuid)* |
-|  courseUuid *(uuid)* |
-
-
+***
 ## Queries
 - When user starts a lesson
   1. Create UserLesson if not exist
-  2. Create UserCourse if not exist
-- When user completes a lesson
-  1. Mark UserLesson as complete
-  2. Mark if UserCourse is complete
-      -  Find all lessons associated with course
-      -  Check if user has completed all the lessons
-- When user goes to course page
-  1. Loop through each course:
-      - If UserCourse is complete return 100
-      - Else divide number of UserLessons completed by total Lessons of Course
+   `INSERT INTO UserLesson (userUuid, lessonUuid)
+   VALUES ('123', '123')
+   ON CONFLICT IGNORE`
+- When user stops a video
+  1. Update UserLesson.timestamp
+  `UPDATE UserLesson  SET timestamp = 123 WHERE WHERE userUuid = '123' AND lessonUuid = '123'`
+  2. If timestamp >= end or Lesson.length, set Lesson.completed to TRUE
+  `UPDATE UserLesson
+  SET completed = TRUE
+  WHERE userUuid = '123' AND lessonUuid = '123'`
+- When user goes to Catalog page
+  1. Get UserLesson entries for User
+  `SELECT * FROM UserLesson WHERE userUuid = '123'`
+  2. Calculate progress using lesson and course data already pulled from database.
