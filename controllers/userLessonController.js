@@ -4,7 +4,7 @@ const ErrorWithHttpStatus = require('../utils/error.httpStatus.utils');
 // =================================================================
 // =================================================================
 // GET requests
-exports.getUserLessonsById = (request, response, next) => {
+exports.getUserLessonById = (request, response, next) => {
   UserLesson.findAll({ where: { uuid: request.params.id } })
     .then(data => {
       if (!data || data.length === 0) {
@@ -15,9 +15,9 @@ exports.getUserLessonsById = (request, response, next) => {
     .catch(next);
 };
 
-
-exports.getUserLessonsByUserId = (request, response, next) => {
-  UserLesson.findAll({ where: { userUuid: request.params.userId } })
+/* get UserLesson by Lesson and User uuids */
+exports.getUserLessonByLessonAndUserIds = (request, response, next) => {
+  UserLesson.findAll({ where: { userUuid: request.params.userId, lessonUuid: request.params.lessonId } })
     .then(data => {
       if (!data || data.length === 0) {
         throw new ErrorWithHttpStatus('No entries found matching id', 404);
@@ -27,9 +27,8 @@ exports.getUserLessonsByUserId = (request, response, next) => {
     .catch(next);
 };
 
-/* get UserLesson by User and Lesson uuids */
-exports.getUserLessonsByIds = (request, response, next) => {
-  UserLesson.findAll({ where: { userUuid: request.params.userId, lessonUuid: request.params.lessonId } })
+exports.getUserLessonsByUserId = (request, response, next) => {
+  UserLesson.findAll({ where: { userUuid: request.params.userId } })
     .then(data => {
       if (!data || data.length === 0) {
         throw new ErrorWithHttpStatus('No entries found matching id', 404);
