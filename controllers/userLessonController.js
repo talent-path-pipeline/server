@@ -33,7 +33,7 @@ exports.getUserLessonsByUserId = (request, response, next) => {
       if (!data || data.length === 0) {
         throw new ErrorWithHttpStatus('No entries found matching id', 404);
       }
-      response.status(200).send(data[0]);
+      response.status(200).send(data);
     })
     .catch(next);
 };
@@ -43,6 +43,9 @@ exports.getUserLessonsByUserId = (request, response, next) => {
 // POST requests
 
 exports.createUserLesson = (request, response, next) => {
+  if (!request.body.lessonUuid || !request.body.userUuid) {
+    throw new ErrorWithHttpStatus('Request body must have lessonUuid and userUuid', 400);
+  }
   UserLesson.create(request.body)
     .then(data => {
       response.status(201).send(data);
