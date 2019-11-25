@@ -30,9 +30,9 @@ exports.getUserLessonByLessonAndUserIds = (request, response, next) => {
 exports.getUserLessonsByUserId = (request, response, next) => {
   UserLesson.findAll({ where: { userUuid: request.params.userId } })
     .then(data => {
-      if (!data || data.length === 0) {
-        throw new ErrorWithHttpStatus('No entries found matching id', 404);
-      }
+      // if (!data || data.length === 0) {
+      //   throw new ErrorWithHttpStatus('No entries found matching id', 404);
+      // }
       response.status(200).send(data);
     })
     .catch(next);
