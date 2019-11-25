@@ -10,9 +10,11 @@
 | completed *(boolean)* |
 | userUuid *(uuid)* FK |
 | lessonUuid *(uuid)* FK |
+| courseUuid *(uuid)* FK |
 | timestamp *(integer)* |
 
-*Note: Timestamp tracking is mostly there if we want to resume video progress for user at a later time. Not important to store if only checking lesson completion.*
+***Note**: Associating courseUuid directly with UserLesson table for convenience's sake for now.*
+***Note**: Timestamp tracking is mostly there if we want to resume video progress for user at a later time. Not important to store if only checking lesson completion.*
 ***
 ## Queries
 - When user starts a lesson

@@ -65,6 +65,7 @@ Path.hasMany(Course);
 // Candidate.belongsToMany(Lesson, { through: CandidateLesson });
 Lesson.belongsToMany(User, { through: UserLesson });
 User.belongsToMany(Lesson, { through: UserLesson });
+UserLesson.belongsTo(Course, { foreignKey: 'courseUuid', targetKey: 'uuid'});
 
 module.exports = {
   User,
