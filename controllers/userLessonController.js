@@ -4,6 +4,18 @@ const ErrorWithHttpStatus = require('../utils/error.httpStatus.utils');
 // =================================================================
 // =================================================================
 // GET requests
+
+exports.getUserLessons = (request, response, next) => {
+  UserLesson.findAll({ where: request.query })
+    .then(data => {
+      if (!data || data.length === 0) {
+        throw new ErrorWithHttpStatus('No userlessons found matching query', 404);
+      }
+      response.status(200).send(data);
+    })
+    .catch(next);
+};
+
 exports.getUserLessonById = (request, response, next) => {
   UserLesson.findAll({ where: { uuid: request.params.id } })
     .then(data => {
@@ -17,7 +29,23 @@ exports.getUserLessonById = (request, response, next) => {
 
 /* get UserLesson by Lesson and User uuids */
 exports.getUserLessonByLessonAndUserIds = (request, response, next) => {
-  UserLesson.findAll({ where: { userUuid: request.params.userId, lessonUuid: request.params.lessonId } })
+  UserLesson.findAll({
+    where: { userUuid: request.params.userId, lessonUuid: request.params.lessonId },
+  })
+    .then(data => {
+      // if (!data || data.length === 0) {
+      //   throw new ErrorWithHttpStatus('No entries found matching id', 404);
+      // }
+      response.status(200).send(data[0]);
+    })
+    .catch(next);
+};
+
+/* get UserLesson by course and User uuids */
+exports.getUserLessonByCourseAndUserIds = (request, response, next) => {
+  UserLesson.findAll({
+    where: { userUuid: request.params.userId, courseUuid: request.params.courseId },
+  })
     .then(data => {
       // if (!data || data.length === 0) {
       //   throw new ErrorWithHttpStatus('No entries found matching id', 404);
@@ -52,7 +80,6 @@ exports.createUserLesson = (request, response, next) => {
     })
     .catch(next);
 };
-
 
 // =================================================================
 // =================================================================

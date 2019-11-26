@@ -6,6 +6,12 @@ const router = require('express').Router();
 const userLessonController = require('../../controllers/userLessonController');
 
 /**
+ *  [GET] /
+ *  @description: Get UserLesson by query
+ */
+router.get('/', userLessonController.getUserLessons);
+
+/**
  *  [GET] /:id
  *  @description: Get UserLesson by id
  */
@@ -15,8 +21,19 @@ router.get('/:id', userLessonController.getUserLessonById);
  *  [GET] /lesson/:lessonId/user/:userId
  *  @description: Get UserLesson by lesson id and user id
  */
-router.get('/lesson/:lessonId/user/:userId', userLessonController.getUserLessonByLessonAndUserIds);
+router.get(
+  '/user/:userId/lesson/:lessonId',
+  userLessonController.getUserLessonByLessonAndUserIds,
+);
 
+/**
+ *  [GET] /course/:courseId/user/:userId
+ *  @description: Get UserLesson by course id and user id
+ */
+router.get(
+  '/user/:userId/course/:courseId',
+  userLessonController.getUserLessonByCourseAndUserIds,
+);
 
 /**
  *  [GET] /user/:id
@@ -31,7 +48,6 @@ router.get('/user/:userId', userLessonController.getUserLessonsByUserId);
  */
 router.post('/', userLessonController.createUserLesson);
 
-
 /**
  *  [PATCH] /:id
  *  @description: Update lesson
@@ -43,6 +59,5 @@ router.patch('/:id', userLessonController.updateUserLesson);
  *  @description: Delete UserLesson
  */
 router.delete('/:id', userLessonController.deleteUserLesson);
-
 
 module.exports = router;
