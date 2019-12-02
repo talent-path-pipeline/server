@@ -57,6 +57,13 @@ router.use('/api/courses', require('./public/courses'));
 router.use('/api/paths', require('./public/paths'));
 
 /**
+ * UserLesson routes
+ * @description: Handles all routes for UserLessons.
+ */
+router.use('/api/userlessons', require('./public/userlessons'));
+
+
+/**
  * Nested data routes
  * @description: Handles all routes for getting fully nested data representation objects
  */
