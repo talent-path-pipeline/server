@@ -29,7 +29,7 @@ function startServer() {
   });
 }
 
-sequelize.sync({ force: false }).then(async () => {
+sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(async () => {
   console.log(`Database tables created/synced`);
   if (process.env.SEEDING === 'true') {
     await seedContent([DM_PATH]);
